@@ -1,0 +1,99 @@
+<% layout('user/layouts/boilerplate') -%>
+
+
+
+    <!-- --------------------------------- shop section ------------------------------------- -->
+
+    <section class="section shop-sec">
+        <div class="full-con">
+            <div class="breadcrumb">
+                <a href="index.ejs">Home</a>
+                <img src="/user/icons/slash.png" alt="">
+                <a href="seller.ejs">Seller</a>
+            </div>
+            <div class="basic-page">
+                <h2 class="page-title">Add Vehicle for Selling</h2>
+                <form action="/seller" class="seller-form" method="post">
+                    <input type="text" name="Date" id="Date" class="automatic-d" readonly>
+                    <script>
+                        const date = new Date();
+
+                        let day = date.getDate();
+                        let month = date.getMonth() + 1;
+                        let year = date.getFullYear();
+
+                        // This arrangement can be altered based on how we want the date's format to appear.
+                        let currentDate = `${day}-${month}-${year}`;
+                        document.getElementById('Date').value = currentDate;
+
+                    </script>
+
+                    <input type="text" name="<%= currentUser._id  %>" id="" value="#userid" class="hidden" required>
+                    <input type="text" name=" <%= currentUser.displayName  %>" id="" value="User Name" class="hidden"
+                        required>
+                    <div class="grid2">
+                        <input type="text" name="SellerApplyName" id="" placeholder="Vehicle name" required>
+                        <input type="text" name="model" id="" placeholder="Vehicle model name" required>
+                    </div>
+
+                    <div class="grid2">
+                        <input type="number" name="kmDriven" id="" placeholder="Kilometre Driven" required>
+                        <input type="text" name="buyingYear" id="" placeholder="Buying year" required>
+                    </div>
+                    <div class="grid2">
+
+                        <input type="number" name="sellingPrice" id="" placeholder="Selling price" required>
+                        <input type="text" name="location" id="" placeholder="Your location" required>
+                    </div>
+
+                    <!-- <div class="upload-file">
+                        <label for="">Upload Vehicle Photos</label>
+                        <input type="file" name="" id="" class="custom-file-input" multiple>
+                    </div> -->
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+    </body>
+
+    </html>

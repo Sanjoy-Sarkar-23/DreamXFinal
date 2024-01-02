@@ -1,0 +1,1077 @@
+<% layout('user/layouts/boilerplate') -%>
+
+
+    <body>
+
+
+        <!-- --------------------------------- Banner ------------------------------------- -->
+
+        <section>
+            <div class="banner-sec">
+                <div id="slider">
+                    <ul id="slideWrap">
+                        <li><img src="/user/images/banner/new-banner (3).jpg" alt=""></li>
+                        <li><img src="/user/images/banner/new-banner.jpg" alt=""></li>
+                        <li><img src="/user/images/banner/new-banner (4).jpg" alt=""></li>
+                    </ul>
+                    <a id="prev" href="#"><i class="fa-solid fa-chevron-left"></i></a>
+                    <a id="next" href="#"><i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <div class="banner-layer">
+                    <div class="full-con">
+                        <div class="banner-container">
+                            <div class="banner-top">
+                                <i class="fa-sharp fa-solid fa-quote-left" aria-hidden="true"></i><br>
+                                <h5>Chase your Dream's</h5>
+                                <h1>Dreamx</h1>
+                                <h6>Car, Bike and Scooty Salling and Buying Company</h6>
+                            </div>
+                            <div class="banner-bottom">
+                                <img src="/user/images/other/qr.png" alt="">
+                                <p>
+                                    Our vision is to construct a complete ecosystem for consumers and car
+                                    manufacturers,
+                                    dealers and related businesses such that consumers have easy and complete access
+                                    to
+                                    buying and selling cars,
+                                </p>
+                                <div class="flex">
+                                    <img src="/user/icons/location-pin.png" alt="">
+                                    <span>72 abc Road, Agartala, Tripura West, 799001</span>
+                                </div>
+                                <div class="flex">
+                                    <img src="/user/icons/call.png" alt="">
+                                    <span>87XXXX9800 / 98XXXX2396</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- --------------------------------- Bikes abd cars ------------------------------------- -->
+        <section class="section">
+            <div class="full-con">
+                <div class="car-bike-sec">
+                    <div class="car-bike-box">
+                        <img src="/user/images/other/buybike.jpg" alt="">
+                        <a href="/shop/Bike">
+                            <div class="sell-buy-container">
+                                <div class="sell-buy-text">
+                                    <h4>Need a Bike</h4>
+                                    <div class="line"></div>
+                                    <p>Check out our best bike at low prices</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="car-bike-box">
+                        <img src="/user/images/other/buycar.jpg" alt="">
+                        <a href="/shop/Car">
+                            <div class="sell-buy-container">
+                                <div class="sell-buy-text">
+                                    <h4>Need a Car</h4>
+                                    <div class="line"></div>
+                                    <p>View our latest cars at best condition</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="car-bike-box">
+                        <img src="/user/images/other/sellbike.jpg" alt="">
+                        <a href="/seller">
+                            <div class="sell-buy-container">
+                                <div class="sell-buy-text">
+                                    <h4>Sell a Bike</h4>
+                                    <div class="line"></div>
+                                    <p>You sell your old bike or care here</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="car-bike-box">
+                        <img src="/user/images/other/sellcar.jpg" alt="">
+                        <a href="/seller">
+                            <div class="sell-buy-container">
+                                <div class="sell-buy-text">
+                                    <h4>Sell a Car</h4>
+                                    <div class="line"></div>
+                                    <p>If you want to sell a car, we buy a car</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------------------------- Receant products ------------------------------------- -->
+
+        <section class="section">
+            <div class="full-con">
+                <div class="receant-product">
+                    <div class="title">
+                        <h2>Recently added Cars & Bikes</h2>
+                    </div>
+                    <div class="receant-product-flex">
+                        <% recentlyAddedListings.forEach(listing=> { %>
+                            <a href="/product/<%= listing._id %>">
+                                <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src=<%=listing.image %> alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>
+                                                    <%= listing.brand %>
+                                                </h3>
+                                                <p>
+                                                    <%= listing.model %>
+                                                </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <%= listing.kms.toLocaleString("en-IN") %> KM
+                                            </li>
+                                            <li class="center">
+                                                <%= listing.buying %>
+                                            </li>
+                                            <li>
+                                                <%= listing.fuelType %>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </a>
+                            <% }); %>
+                                <!-- <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src="/product/scooty2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Royal Enfield </h3>
+                                                <p>Classic 350</p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 1,20,000</p>
+                                        <ul>
+                                            <li>34,580 KM</li>
+                                            <li class="center">2017</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                                <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src="/product/suv2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Tiago </h3>
+                                                <p>1.2 Revotron XZA AMT</p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 5,25,000</p>
+                                        <ul>
+                                            <li>7,300.0 KM </li>
+                                            <li class="center">2017</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src="/product/sedan2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Yamaha </h3>
+                                                <p>Rayz</p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 45,000</p>
+                                        <ul>
+                                            <li>4,580 KM</li>
+                                            <li class="center">2016</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src="/product/bike3.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Bajaj </h3>
+                                                <p>Avenger 160 </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 75,000</p>
+                                        <ul>
+                                            <li>10,500 KM</li>
+                                            <li class="center">2020</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src="/product/scooty3.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>TVS </h3>
+                                                <p>Ntorq 125cc </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 52,500</p>
+                                        <ul>
+                                            <li>12,568 KM</li>
+                                            <li class="center">2020</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-box">
+                                    <div class="product-img recent">
+                                        <img src="/product/hatchback1.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Punch </h3>
+                                                <p>Pure iCNG </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 7,00,000</p>
+                                        <ul>
+                                            <li>900 KM</li>
+                                            <li class="center">2022</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                    </div>
+
+                    <a href="/shop"><button class="view-all-btn">View All Recent Cars & Bikes </button></a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- --------------------------------- used Bike by type ------------------------------------- -->
+
+
+        <section class="section">
+            <div class="full-con">
+                <div class="receant-product">
+                    <div class="title">
+                        <h2>Used Bike by types</h2>
+                    </div>
+                    <div class="used-car-type">
+                        <div class="tab">
+                            <button class="tablinksbike" onclick="bikeType(event, 'Motorcycles')"
+                                id="defaultOpenbike">Motorcycles</button>
+                            <button class="tablinksbike" onclick="bikeType(event, 'Scooters')">Scooters</button>
+                        </div>
+
+                        <div id="Motorcycles" class="tabcontentbike">
+                            <div class="product-grid">
+                                <% motorcycles.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+
+                            </div>
+
+                            <a href="/shop/Motorcycles"><button class="view-all-btn">View All <span>Motorcycles</span>
+                                </button></a>
+                        </div>
+
+                        <div id="Scooters" class="tabcontentbike">
+                            <div class="product-grid">
+                                <% scooters.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+                                        <!-- <div class="product-box">
+                                            <div class="product-img">
+                                                <img src="/product/scooty4.webp" alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>Tata Punch </h3>
+                                                        <p>Pure iCNG </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; 7,00,000</p>
+                                                <ul>
+                                                    <li>900 KM</li>
+                                                    <li class="center">2022</li>
+                                                    <li>Petrol</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src="/product/scooty1.webp" alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>Tata Punch </h3>
+                                                        <p>Pure iCNG </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; 7,00,000</p>
+                                                <ul>
+                                                    <li>900 KM</li>
+                                                    <li class="center">2022</li>
+                                                    <li>Petrol</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src="/product/scooty2.webp" alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>Tata Punch </h3>
+                                                        <p>Pure iCNG </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; 7,00,000</p>
+                                                <ul>
+                                                    <li>900 KM</li>
+                                                    <li class="center">2022</li>
+                                                    <li>Petrol</li>
+                                                </ul>
+                                            </div>
+                                        </div> -->
+                            </div>
+                            <a href="/shop/Scooters"><button class="view-all-btn">View All <span>Scooters</span>
+                                </button></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ---------------------------------  selling section ------------------------------------- -->
+
+        <section class="section selling-sec">
+            <div class="full-con">
+                <div class="selling-grid">
+                    <div class="left">
+                        <h2>Selling a car or bike? We’re buying!</h2>
+                        <p>Get up to best price when you sell your next car or bike from us.</p>
+                        <a href="/seller"><button>SELL NOW</button></a>
+                    </div>
+                    <div class="right">
+                        <img src="/user/images/other/yamaha.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- --------------------------------- used car by body type ------------------------------------- -->
+
+
+        <section class="section">
+            <div class="full-con">
+                <div class="receant-product">
+                    <div class="title">
+                        <h2>Used Cars by body types</h2>
+                    </div>
+                    <div class="used-car-type">
+                        <div class="tab">
+                            <button class="tablinks" onclick="carBody(event, 'Hatchback')"
+                                id="defaultOpencar">Hatchback</button>
+                            <button class="tablinks" onclick="carBody(event, 'Sedan')">Sedan</button>
+                            <button class="tablinks" onclick="carBody(event, 'SUV')">SUV</button>
+                            <button class="tablinks" onclick="carBody(event, 'Minivan')">Minivan</button>
+                            <button class="tablinks" onclick="carBody(event, 'MUV')">MUV</button>
+                        </div>
+
+                        <div id="Hatchback" class="tabcontent">
+                            <div class="product-grid">
+
+                                <% Hatchback.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist" onclick="addToWishlist('<%= listing._id %>')"
+                                                        data-listing-id="<%= listing._id %>">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+                                        <!-- <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/hatchback2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Bajaj </h3>
+                                                <p>NS 200</p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+    
+                                        <p class="price">&#8377; 60,000</p>
+                                        <ul>
+                                            <li>54,580 KM</li>
+                                            <li class="center">2016</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+    
+                                </div>
+                                <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/hatchback3.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Bajaj </h3>
+                                                <p>NS 200</p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+    
+                                        <p class="price">&#8377; 60,000</p>
+                                        <ul>
+                                            <li>54,580 KM</li>
+                                            <li class="center">2016</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+    
+                                </div>
+                                <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/hatchback4.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Bajaj </h3>
+                                                <p>NS 200</p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+    
+                                        <p class="price">&#8377; 60,000</p>
+                                        <ul>
+                                            <li>54,580 KM</li>
+                                            <li class="center">2016</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+    
+                                </div> -->
+
+
+                            </div>
+
+                            <a href="/shop/Hatchback"><button class="view-all-btn">View All <span>Hatchback</span>
+                                </button></a>
+                        </div>
+
+                        <div id="Sedan" class="tabcontent">
+                            <div class="product-grid">
+                                <% Sedan.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+                                        <!-- <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/sedan2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Punch </h3>
+                                                <p>Pure iCNG </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 7,00,000</p>
+                                        <ul>
+                                            <li>900 KM</li>
+                                            <li class="center">2022</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <a href="/shop/Sedan"><button class="view-all-btn">View All <span>Sedan</span> </button></a>
+                        </div>
+
+                        <div id="SUV" class="tabcontent">
+                            <div class="product-grid">
+                                <% SUV.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+                                        <!-- <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/suv2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Punch </h3>
+                                                <p>Pure iCNG </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 7,00,000</p>
+                                        <ul>
+                                            <li>900 KM</li>
+                                            <li class="center">2022</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/suv3.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Punch </h3>
+                                                <p>Pure iCNG </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 7,00,000</p>
+                                        <ul>
+                                            <li>900 KM</li>
+                                            <li class="center">2022</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <a href="/shop/SUV"><button class="view-all-btn">View All <span>SUV</span> </button></a>
+                        </div>
+                        <div id="Minivan" class="tabcontent">
+                            <div class="product-grid">
+                                <% Minivan.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+                                        <!-- <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/minivan2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Punch </h3>
+                                                <p>Pure iCNG </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 7,00,000</p>
+                                        <ul>
+                                            <li>900 KM</li>
+                                            <li class="center">2022</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <a href="/shop/Minivan"><button class="view-all-btn">View All <span>Minivan</span>
+                                </button></a>
+                        </div>
+                        <div id="MUV" class="tabcontent">
+                            <div class="product-grid">
+                                <% MUV.forEach(listing=> { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src=<%=listing.image %> alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.kms.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% }); %>
+                                        <!-- <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="images/product/muv2.webp" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3>Tata Punch </h3>
+                                                <p>Pure iCNG </p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+
+                                        <p class="price">&#8377; 7,00,000</p>
+                                        <ul>
+                                            <li>900 KM</li>
+                                            <li class="center">2022</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <a href="/shop/MUV"><button class="view-all-btn">View All <span>MUV</span> </button></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- --------------------------------- Brand Section ------------------------------------- -->
+
+
+        <section class="section">
+            <div class="full-con">
+                <div class="brand-sec">
+                    <div class="title">
+                        <h2>Used Cars & Bikes by brand</h2>
+                    </div>
+                    <div class="brand-sec-grid">
+
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/hero.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/yamaha.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/hyundai.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/honda.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/mahindra.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/tata.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/maruti.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/royal-enfield.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/tvs.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/bajaj.png" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/toyota.webp" alt="">
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="brand">
+                                <img src="/user/images/Brands/ktm.webp" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function addToWishlist(productId) {
+                // Assume you have a function to get the user ID, replace this with your actual user authentication logic
+                const userId = currentUser.getCurrentUserId();
+
+                // Make an API call or send a request to your server to add the product to the wishlist
+                fetch('/wishlist/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        productId: productId,
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Handle success, e.g., show a success message
+                            console.log('Product added to wishlist successfully');
+                        } else {
+                            // Handle failure, e.g., show an error message
+                            console.error('Failed to add product to wishlist');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            // Replace this with your actual user authentication logic
+            function getCurrentUserId() {
+                // This is a placeholder; implement your logic to get the user ID from your authentication system
+                // For simplicity, assume the user ID is stored in a variable or retrieved from a cookie/session
+                return 'user123';
+            }
+        </script>
+
+
+    </body>
+
+    </html>

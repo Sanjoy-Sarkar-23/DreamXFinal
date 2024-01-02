@@ -1,0 +1,190 @@
+<% layout('user/layouts/boilerplate') -%>
+
+
+    <body>
+        <!-- --------------------------------- shop section ------------------------------------- -->
+
+        <section class="section shop-sec">
+            <div class="full-con">
+                <div class="breadcrumb">
+                    <a href="/">Home</a>
+                    <img src="/user/icons/slash.png" alt="">
+                    <a class="active" href="/shop">Shop</a>
+                </div>
+                <div class="shop-body">
+                    <div class="shop-grid">
+                        <button class="filter-btn" onclick="myFilter()">Filter</button>
+                        <div class="shop-filter" id="myfilter">
+
+                            <button class="filterclose" onclick="closeFilter()">Close</button>
+                            <div class="filter-box">
+                                <h3>Price</h3>
+                                <div class="item">
+                                    <input type="radio" name="price" id="low-to-high">
+                                    <label for="low-to-high">Low to High</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" name="price" id="high-to-low">
+                                    <label for="high-to-low">High to Low</label>
+                                </div>
+                            </div>
+
+                            <div class="filter-box">
+                                <h3>Body Type</h3>
+                                <h6>Bikes</h6>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Motorcycles">
+                                    <label for="Motorcycles">Motorcycles</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Scooters">
+                                    <label for="Scooters">Scooters</label>
+                                </div>
+                                <h6>Cars</h6>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Hatchback">
+                                    <label for="Hatchback">Hatchback</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Sedan">
+                                    <label for="Sedan">Sedan</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="SUV">
+                                    <label for="SUV">SUV</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Minivan">
+                                    <label for="Minivan">Minivan</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="MUV">
+                                    <label for="MUV">MUV</label>
+                                </div>
+                            </div>
+                            <div class="filter-box">
+                                <h3>Kilometer Driven</h3>
+                                <div class="item">
+                                    <input type="radio" name="Kilometer" id="low-to-high-km">
+                                    <label for="low-to-high-km">Low to High</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" name="Kilometer" id="high-to-low-km">
+                                    <label for="high-to-low-km">High to Low</label>
+                                </div>
+                            </div>
+                            <div class="filter-box">
+                                <h3>Categories</h3>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Bikes">
+                                    <label for="Bikes">Bikes</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Cars">
+                                    <label for="Cars">Cars</label>
+                                </div>
+                            </div>
+                            <div class="filter-box">
+                                <h3>Brand</h3>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Bajaj">
+                                    <label for="Bajaj">Bajaj</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Honda">
+                                    <label for="Honda">Honda</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Hero">
+                                    <label for="Hero">Hero</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="TVS">
+                                    <label for="TVS">TVS</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Suzuki">
+                                    <label for="Suzuki">Suzuki</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Yamaha">
+                                    <label for="Yamaha">Yamaha</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="TATA">
+                                    <label for="TATA">TATA</label>
+                                </div>
+                            </div>
+                            <div class="filter-box">
+                                <h3>Fuel type</h3>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Petrol">
+                                    <label for="Petrol">Petrol</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="Diesel">
+                                    <label for="Diesel">Diesel</label>
+                                </div>
+                                <div class="item">
+                                    <input type="checkbox" name="" id="CNG">
+                                    <label for="CNG">CNG</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="shop-product">
+                            <div class="shop-product-grid">
+                                <% for(let listing of allListings) { %>
+                                    <a href="/product/<%= listing._id %>">
+                                        <div class="product-box">
+                                            <div class="product-img">
+                                                <img src="<%= listing.image %>" alt="">
+                                            </div>
+                                            <div class="product-dt">
+                                                <div class="product-name-wishlist">
+                                                    <div class="product-name">
+                                                        <h3>
+                                                            <%= listing.brand %>
+                                                        </h3>
+                                                        <p>
+                                                            <%= listing.model %>
+                                                        </p>
+                                                    </div>
+                                                    <div class="wishlist">
+                                                        <img src="/user/icons/wishlist.png" alt="">
+                                                    </div>
+                                                </div>
+
+                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <%= listing.price.toLocaleString("en-IN") %> KM
+                                                    </li>
+                                                    <li class="center">
+                                                        <%= listing.buying %>
+                                                    </li>
+                                                    <li>
+                                                        <%= listing.fuelType %>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <script src="js/script.js"></script>
+        <script>
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+
+    </body>
+
+    </html>

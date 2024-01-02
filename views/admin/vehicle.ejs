@@ -1,0 +1,187 @@
+<% layout('admin/layouts/boilerplate') -%>
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Vehicles</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Vehicles</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <br>
+                                <div class="d-flex justify-content-between">
+                                    <h4 class="card-title">All vehicle</h4>
+                                    <a href="/add_vehicle" type="button"
+                                        class="btn btn-success waves-effect waves-light">
+                                        Add new <i class="ri-arrow-right-line align-middle ms-2"></i>
+                                    </a>
+                                </div>
+
+                                <br>
+
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle ID#</th>
+                                            <th>Name</th>
+                                            <th>Model</th>
+                                            <th>Body type</th>
+                                            <th>Price</th>
+                                            <th>km driven</th>
+                                            <th>Buying year</th>
+                                            <th>Brand</th>
+                                            <th>Category</th>
+                                            <th>Status</th>
+                                            <th>Operation</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <% for(let listing of allListings) { %>
+                                            <tr data-listing-id="<%= listing._id %>">
+                                                <td>
+                                                    <%= listing._id %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.name %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.model %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.bodyType %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.price.toLocaleString("en-IN") %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.kms.toLocaleString("en-IN") %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.buying %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.brand %>
+                                                </td>
+                                                <td>
+                                                    <%= listing.category %>
+                                                </td>
+                                                <td><button type="button"
+                                                        class="btn btn-warning btn-sm">Available</button></td>
+                                                <td>
+                                                    <a type="button" href="/edit_vehicle/<%= listing._id %>"
+                                                        class="btn btn-primary btn-sm"><i
+                                                            class="ri-pencil-line"></i></a>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                        onclick="deleteListing('<%= listing._id %>')">
+                                                        <i class="ri-delete-bin-7-line"></i>
+                                                    </button>
+
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                                <tr>
+                                                    <td>bajaj001</td>
+                                                    <td>Bajaj Pulser 220</td>
+                                                    <td>2015-16</td>
+                                                    <td>Motorcycles</td>
+                                                    <td>75000</td>
+                                                    <td>20000</td>
+                                                    <td>2017</td>
+                                                    <td>Bajaj</td>
+                                                    <td>Bike</td>
+                                                    <td><button type="button"
+                                                            class="btn btn-warning btn-sm">Available</button>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary btn-sm"><i
+                                                                class="ri-pencil-line"></i></button>
+                                                        <button type="button" class="btn btn-danger btn-sm"><i
+                                                                class="ri-delete-bin-7-line"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>dio001</td>
+                                                    <td>Honda Dio</td>
+                                                    <td>VS4 2017</td>
+                                                    <td>Scooter</td>
+                                                    <td>40000</td>
+                                                    <td>25000</td>
+                                                    <td>2017</td>
+                                                    <td>Honda</td>
+                                                    <td>Bike</td>
+                                                    <td><button type="button"
+                                                            class="btn btn-secondary btn-sm">Sold</button>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-primary btn-sm" href="edit-vehicle.html"
+                                                            type="button"><i class="ri-pencil-line"></i></a>
+
+                                                        <button type="button" class="btn btn-danger btn-sm"><i
+                                                                class="ri-delete-bin-7-line"></i></button>
+                                                    </td>
+                                                </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+
+
+
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Designe and Developed by
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- ... -->
+
+
+    <!-- ... -->

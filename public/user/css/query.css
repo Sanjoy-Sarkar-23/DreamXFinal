@@ -1,0 +1,750 @@
+@media (max-width: 1700px) {
+
+    .full-con {
+        width: 92vw;
+    }
+
+    header {
+        height: 11vh;
+    }
+    .banner-sec #slider #next {
+        right: 4vw;
+    }
+
+    .banner-sec #slider #prev {
+        right: 8vw;
+    }
+
+    .top-head .top-head-right ul li {
+        font-size: 12px;
+        padding: 42px 6px 16px;
+    }
+
+    .top-head .top-head-right ul li img {
+        width: 15px;
+
+    }
+
+    .banner-sec {
+        padding-top: 11vh;
+        height: 89vh;
+    }
+
+    .shop-box {
+        top: 11vh;
+    }
+
+    .profile-box {
+        top: 11vh;
+    }
+
+}
+
+
+@media (max-width: 1200px) {
+
+    .full-con {
+        width: 94vw;
+    }
+
+    .logo .logo-text h1 {
+        font-size: 12px;
+    }
+
+    .logo .logo-text h4 {
+        font-size: 14px;
+        margin-top: 6px;
+    }
+
+    .shop-box {
+        width: 35vw;
+    }
+
+    .banner-sec {
+        height: 70vh;
+    }
+
+    .banner-sec #slider #next {
+        right: 4vw;
+    }
+
+    .banner-sec #slider #prev {
+        right: 9vw;
+    }
+
+    .banner-container .banner-top {
+        padding-top: 10rem;
+    }
+
+    .banner-container .banner-bottom {
+        padding-bottom: 3rem;
+    }
+
+    .car-bike-sec {
+        margin: 36px 0 16px;
+    }
+
+    .car-bike-sec .car-bike-box {
+        height: 208px;
+    }
+
+    .sell-buy-container .sell-buy-text {
+        padding: 20px 20px 24px;
+    }
+
+    .sell-buy-text h4 {
+        font-size: 20px;
+    }
+
+    .sell-buy-text .line {
+        width: 48px;
+        margin: 4px 0 16px;
+    }
+
+    .receant-product {
+        margin: 16px 0;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .selling-grid .left {
+        padding-left: 48px;
+    }
+
+    .selling-grid .left h2 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .selling-grid .left p {
+        width: 90%;
+        font-size: 12px;
+        padding-bottom: 24px;
+    }
+
+    .brand-sec {
+        margin: 16px 0;
+    }
+
+    .brand-sec .brand-sec-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .subscribe-sec {
+        margin-top: 24px;
+        height: 264px;
+    }
+
+    .subscribe {
+        padding: 60px 48px;
+    }
+
+    .footer-main {
+        display: flex;
+        justify-content: center;
+        padding: 94px 0 16px;
+    }
+
+    .footer-main .foot-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        column-gap: 50px;
+    }
+
+    .foot-grid .foot-menu:nth-of-type(1) {
+        order: 2;
+    }
+
+    .foot-grid .foot-menu:nth-of-type(2) {
+        order: 3;
+    }
+
+    .foot-grid .foot-menu:nth-of-type(3) {
+        order: 4;
+    }
+
+    .foot-grid .foot-about {
+        order: 1;
+    }
+
+
+
+    footer .foot-bottom {
+        padding: 16px 0;
+    }
+
+    .shop-body .shop-grid .shop-product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-body {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .full-con {
+        width: 92%;
+    }
+
+    header {
+        height: 54px;
+    }
+
+    .mobile-top-left {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+    }
+
+    .logo .logo-icon img {
+        height: 40px;
+    }
+
+    /* .logo .logo-text {
+        display: none;
+    } */
+    .logo .logo-text h1 {
+        font-size: 10px;
+    }
+
+    .logo .logo-text h4 {
+        font-size: 11px;
+        margin-top: 4px;
+    }
+
+    .top-head .top-head-right {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .menu img {
+        width: 16px;
+        margin-bottom: -2px;
+        object-fit: contain;
+    }
+
+    .sidepanel {
+        width: 100%;
+        position: fixed;
+        z-index: 99999;
+        height: 100vh;
+        top: 0;
+        right: -100%;
+        background-color: #e9e1ff;
+        overflow: hidden;
+        transition: 0.5s;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .sidepanel .menu-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0 48px;
+    }
+
+    .sidepanel .close-btn-box {
+        width: 16px;
+        margin-right: 10px;
+    }
+
+    .menu-body ul {
+        padding: 0 10px;
+    }
+
+    .menu-body ul li {
+        list-style: none;
+        margin: 24px 0;
+        font-size: 32px;
+        font-family: 'PPEiko-Heavy';
+        color: var(--secondary-color);
+    }
+
+    .sidepanel .close-btn-box img {
+        width: 100%;
+        object-fit: contain;
+    }
+
+
+    .social-logo {
+        gap: 16px;
+        margin-top: 8px;
+    }
+
+    .social-logo .logo img {
+        height: 20px;
+    }
+
+    .social-logo.menu-social {
+        margin-top: 64px;
+        padding: 0 10px;
+        gap: 24px;
+    }
+
+    .social-logo.menu-social img {
+        height: 32px;
+    }
+
+    .banner-sec {
+        padding-top: 54px;
+    }
+
+    .banner-container .banner-top {
+        padding-top: 6rem;
+    }
+
+    .banner-sec #slider #prev,
+    #slider #next {
+        bottom: 1%;
+        font-size: 12px;
+    }
+
+    .banner-sec #slider #next {
+        right: 4vw;
+    }
+
+    .banner-sec #slider #prev {
+        right: 11vw;
+    }
+
+    .car-bike-sec {
+        margin: 24px 0 12px;
+        gap: 20px;
+        border-radius: 12px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .car-bike-sec .car-bike-box {
+        border-radius: 12px;
+        height: 172px;
+    }
+
+    .sell-buy-text .line {
+        width: 48px;
+        margin: 4px 0 10px;
+    }
+
+    .sell-buy-text h4 {
+        font-size: 18px;
+    }
+
+    .sell-buy-text p {
+        width: 100%;
+        font-size: 10px;
+        line-height: 13px;
+    }
+
+
+    .used-car-type .tab {
+        margin-bottom: 10px;
+    }
+
+    .used-car-type .tab button {
+        margin: 0 10px 10px 0;
+        padding: 8px 10px;
+    }
+
+    .selling-sec {
+        overflow: hidden;
+    }
+
+    .selling-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 32px 0 16px;
+    }
+
+    .selling-grid .left {
+        padding: 0;
+    }
+
+    .selling-grid .right {
+        justify-content: center;
+    }
+
+    .selling-grid .right img {
+        padding-top: 0;
+        width: 60%;
+        margin-right: -321px;
+        margin-top: -108px;
+    }
+
+    .selling-grid .left p {
+        width: 70%;
+        font-size: 11px;
+    }
+
+    .brand-sec .brand-sec-grid {
+        gap: 10px;
+    }
+
+    .brand-sec .brand-sec-grid .brand {
+        height: 64px;
+    }
+
+    .subscribe-sec {
+        height: 248px;
+    }
+
+    .subscribe {
+        padding: 92px 0 48px;
+    }
+
+    .subscribe form {
+        margin-top: 20px;
+    }
+
+    .subscribe form input[type=email] {
+        width: 50%;
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .subscribe h2 {
+        font-size: 22px;
+    }
+
+    .subscribe p {
+        font-size: 12px;
+    }
+
+    .subscribe form input[type=submit] {
+        font-size: 12px;
+        padding: 8px 16px;
+        margin-left: 0px;
+    }
+
+    .footer-main .foot-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer .foot-bottom .foot-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-sec {
+        padding-top: 72px;
+    }
+
+    .shop-body .shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-body .shop-grid .shop-product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filterclose {
+        display: block;
+        width: 90%;
+        border: none;
+        border-radius: 10px;
+        padding: 8px 24px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        background-color: var(--secondary-color);
+        color: var(--primary-bg);
+        position: fixed;
+        bottom: 20px;
+        left: 5%;
+    }
+
+    .filter-btn {
+        display: block;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 24px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        background-color: var(--secondary-color);
+        color: var(--primary-bg);
+    }
+
+    .shop-body .shop-grid .shop-filter {
+        width: 100vw;
+        height: 84vh;
+        overflow: auto;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        padding: 64px 0 108px;
+        background-color: var(--primary-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        z-index: 99;
+    }
+
+    .shop-grid .shop-filter .filter-box {
+        background-color: var(--primary-bg);
+        width: 74%;
+    }
+
+    .shop-body .shop-grid .shop-product {
+        overflow: hidden;
+        height: auto;
+    }
+
+    .product-right .buy {
+        flex-direction: column;
+    }
+
+    .product-right .buy a {
+        width: 100%;
+    }
+
+    .product-right .buy button {
+        width: 100%;
+    }
+
+    .product-box .product-img.recent {
+        width: 148px;
+        height: 80px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .product-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .product-box .product-img {
+        width: 40%;
+        height: 80px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .product-box .product-img img {
+        margin-left: 10px;
+        border-radius: 6px;
+    }
+
+    .product-dt {
+        width: 50%;
+        padding: 10px;
+    }
+
+    .product-dt ul li {
+        font-size: 8px;
+    }
+
+    .product-name-wishlist .product-name h3 {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+
+    .product-dt .price {
+        font-size: 13px;
+        margin: 4px 0;
+    }
+
+    .product-name-wishlist .wishlist img {
+        width: 16px;
+    }
+
+    .product-gallery .column {
+        height: 84px;
+
+    }
+
+    .basic-page .basic-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .basic-page .basic-grid .left {
+        grid-row: 2;
+    }
+
+    .basic-page .basic-grid .right {
+        grid-row: 1;
+    }
+
+    .basic-page .basic-grid .right form {
+        margin: 32px 10px 48px;
+    }
+
+    .order-profile-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .order-profile-grid .profile-body {
+        grid-row: 1;
+    }
+
+    .profile-body-box {
+        padding: 20px;
+    }
+
+    .logout-box {
+        padding: 0 16px 20px;
+    }
+
+    .edit-profile {
+        right: 20px;
+    }
+
+    .shortlist-body {
+        grid-row: 1;
+    }
+
+    .log-sign-box {
+        width: 90%;
+    }
+
+    .product-right .buy {
+        row-gap: 2px;
+    }
+
+    .seller-form .grid2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .menu-body ul li {
+        margin: 20px 0;
+        font-size: 28px;
+    }
+
+    .banner-sec {
+        height: 40vh;
+    }
+
+    .banner-container .banner-top .fa-sharp {
+        font-size: 24px;
+        padding-bottom: 4px;
+    }
+
+    .banner-container .banner-top h5 {
+        letter-spacing: 0;
+        word-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: -8px;
+    }
+
+    .banner-container .banner-top h1 {
+        font-size: 50px;
+        letter-spacing: 4px;
+    }
+
+    .banner-container .banner-top h6 {
+        font-size: 12px;
+        letter-spacing: 0;
+        margin-top: -6px;
+    }
+
+    .banner-container .banner-bottom p {
+        font-size: 11px;
+        line-height: 14px;
+        width: 100%;
+        padding-bottom: 8px;
+        margin-bottom: 32px;
+    }
+
+    .banner-container .banner-bottom {
+        display: none;
+    }
+
+    .banner-sec #slider #prev,
+    #slider #next {
+        width: 32px;
+        height: 32px;
+        font-size: 10px;
+    }
+
+    .banner-sec #slider #prev {
+        left: 20px;
+    }
+
+    .banner-sec #slider #next {
+        left: 72px;
+    }
+
+    .car-bike-sec {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 10px;
+        overflow: auto;
+    }
+
+    .car-bike-sec .car-bike-box {
+        width: 70vw;
+    }
+
+    .used-car-type .tab button {
+        margin-right: 10px;
+        padding: 6px 10px;
+        font-size: 8px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-body .shop-grid .shop-product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-gallery .mySlides {
+        height: 200px;
+    }
+
+    .product-gallery .column {
+        height: 48px;
+
+    }
+
+    .shortlist-body .product-grid {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        align-items: center;
+    }
+
+    .log-sign-box {
+        grid-template-columns: 1fr;
+    }
+
+    .log-sign-box .left {
+        display: none;
+    }
+
+    .title {
+        margin-bottom: 12px;
+    }
+
+    .title h2 {
+        font-size: 18px;
+    }
+
+    .receant-product .view-all-btn {
+        margin-top: 12px;
+        font-size: 12px;
+    }
+
+    .edit-profile-box {
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, .25);
+        border-radius: 8px;
+        padding: 24px 20px;
+    }
+}

@@ -1,0 +1,53 @@
+<% layout('user/layouts/boilerplate') -%>
+
+
+
+
+    <!-- --------------------------------- log/sign section ------------------------------------- -->
+    <section class="log-sign-sec">
+        <div class="log-sign-box">
+            <div class="left">
+                <div class="animation">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+                        type="module"></script>
+
+                    <dotlottie-player src="https://lottie.host/b1e198db-01c9-40a3-af5a-ed17d4adb45d/w40idrC2CZ.json"
+                        background="transparent" speed="1" style="width: 100%; height: 100%;" loop
+                        autoplay></dotlottie-player>
+                </div>
+
+            </div>
+            <div class="right">
+                <h2>HELLO</h2>
+                <p>Register in Dream X Car & Bike Sale</p>
+                <form action="/signup" method="post">
+                    <input type="text" name="displayName" id="username" placeholder="Enter Name">
+                    <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Enter Phone No">
+                    <input type="email" name="email" id="email" placeholder="Enter Email Id">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+
+                    <div class="chakbox">
+                        <input type="checkbox" name="" id="agree" required>
+                        <label for="agree">I agree terms & conditions</label>
+                    </div>
+
+
+                    <input type="submit" value="Sign Up">
+                </form>
+
+                <p>Existing User? <a href="/login"> Log In for an Account</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- --------------------------------- footer Section ------------------------------------- -->
+
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    </body>
+
+    </html>

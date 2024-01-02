@@ -1,0 +1,216 @@
+<div id="mySidepanel" class="sidepanel">
+
+    <div class="full-con">
+        <div class="menu-head">
+            <a href="/">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="/user/logo/logo.png" alt="">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Dream X Car & Bike Sale</h1>
+                        <h4>Chase your Dream's</h4>
+                    </div>
+
+                </div>
+            </a>
+
+
+            <div class="close-btn-box" onclick="closeNav()">
+                <img src="/user/icons/close-button.png" alt="">
+            </div>
+
+
+        </div>
+        <div class="menu-body">
+            <ul>
+                <a href="/shop">
+                    <li>Bikes</li>
+                </a>
+                <a href="/shop">
+                    <li>Cars</li>
+                </a>
+                <a href="/order">
+                    <li>Orders</li>
+                </a>
+                <a href="/shortlist">
+                    <li>Shortlists</li>
+                </a>
+                <a href="/contact-us">
+                    <li>Contact Us</li>
+                </a>
+                <a href="/seller">
+                    <li>Become a seller</li>
+                </a>
+            </ul>
+            <div class="social-logo menu-social">
+                <a href="/#">
+                    <div class="logo">
+                        <img src="/user/icons/fb.png" alt="">
+                    </div>
+                </a>
+                <a href="/#">
+                    <div class="logo">
+                        <img src="/user/icons/insta.png" alt="">
+                    </div>
+                </a>
+                <a href="/#">
+                    <div class="logo">
+                        <img src="/user/icons/youtube.png" alt="">
+                    </div>
+                </a>
+                <a href="/#">
+                    <div class="logo">
+                        <img src="/user/icons/twitter.png" alt="">
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+<header>
+    <div class="full-con">
+        <div class="top-head">
+            <div class="top-head-left">
+                <a href="/">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <img src="/user/logo/logo.png" alt="">
+                        </div>
+                        <div class="logo-text">
+                            <h1>Dream X Car & Bike Sale</h1>
+                            <h4>Chase your Dream's</h4>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            <div class="mobile-top-left">
+                <a href="/shortlist">
+                    <div class="menu">
+                        <img src="/user/icons/wishlist.png" alt="">
+                    </div>
+                </a>
+                <a href="/profile">
+                    <div class="menu">
+                        <img src="/user/icons/profile.png" alt="">
+                    </div>
+                </a>
+                <div class="menu" onclick="openNav()">
+                    <img src="/user/icons/menu-bar.png" alt="">
+                </div>
+            </div>
+
+            <div class="top-head-right">
+
+                <ul>
+
+                    <li class="shop-icon">Shop <img src="/user/icons/down-arrow.png" alt="">
+                        <div class="shop-box">
+                            <div class="shop-menu-grid">
+                                <div>
+                                    <h6>Brand</h6>
+                                    <div class="shop-link last">
+                                        <a href="/shop/Tata">Tata</a>
+                                        <a href="/shop/Honda">Honda</a>
+                                        <a href="/shop/Yamaha">Yamaha</a>
+                                        <a href="/shop/TVS">TVS</a>
+                                        <a href="/shop/Suzuki">Suzuki</a>
+                                        <a href="/shop/Hero">Hero</a>
+                                        <a href="/shop/Bajaj">Bajaj</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6>Categories</h6>
+                                    <div class="shop-link">
+                                        <a href="/shop/Bike">Bikes</a>
+                                        <a href="/shop/Car">Cars</a>
+                                    </div>
+                                    <h6>Bikes</h6>
+                                    <div class="shop-link last">
+                                        <a href="/shop/Motorcycle">Motorcycles</a>
+                                        <a href="/shop/Scooter">Scooters</a>
+                                    </div>
+                                </div>
+                                <div>
+
+                                    <h6>Cars</h6>
+                                    <div class="shop-link last">
+                                        <a href="/shop/Hatchback">Hatchback</a>
+                                        <a href="/shop/SUV">SUV</a>
+                                        <a href="/shop/Sedan">Sedan</a>
+                                        <a href="/shop/Minivan">Minivan</a>
+                                        <a href="/shop/MUV">MUV</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </li>
+
+                    <a href="/#">
+                        <a href="/seller">
+                            <li><img src="/user/icons/seller.png" alt="">Become a seller</li>
+                        </a>
+                    </a>
+
+                    <li class="profile-icon"><img src="/user/icons/person.png" alt="">Profile
+                        <div class="profile-box">
+                            <div class="log-sign-profile">
+                                <div class="log-sign">
+                                    <% if (currentUser) { %>
+                                        <a href="/profile">
+                                            <h6>WELCOME</h6>
+                                            <h4>
+                                                To <%= currentUser.displayName %>
+                                            </h4>
+                                        </a>
+                                        <form action="/profile" method="get" style="display: inline-block;">
+                                            <button type="submit">Profile</button>
+                                        </form>
+                                        <form action="/logout" method="get" style="display: inline-block;">
+                                            <button type="submit">Logout</button>
+                                        </form>
+                                        <% } else { %>
+                                            <h6>Please</h6>
+                                            <p>Login for access your account and buy cars & bikes</p>
+                                            <a href="/login">
+                                                <button>Login / Signup</button>
+                                            </a>
+                                            <% } %>
+                                                <!-- <h6>WELCOME</h6>
+                                    <p>To access account and buy cars & bikes</p>
+                                    <a href="/login">
+                                        <button>Login / Signup</button>
+                                    </a> -->
+                                </div>
+                                <!-- <div class="profile">
+                                        <h6>Bishal Acharjee</h6>
+                                        <p>8837310967</p>
+                                        <div class="log-sign-profile" style="margin-bottom: 20px;"></div>
+                                        <a href="/profile">Profile</a>
+                                        <a href="/#">Logout</a>
+                                    </div> -->
+                            </div>
+                            <div class="profile-menu">
+                                <a href="/order">Orders</a>
+                                <a href="/shortlist">Shortlist</a>
+                                <a href="/contact-us">Contact Us</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <a href="/shortlist">
+                        <li><img src="/user/icons/wishlist.png" alt="">Shortlist</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

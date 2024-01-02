@@ -1,0 +1,318 @@
+<% layout('user/layouts/boilerplate') -%>
+    <% const wishlistIconColor='white' , wishlistStatus="Add WishList" , wishlistButton="btnWork" ; %>
+
+
+        <body>
+            <!-- --------------------------------- shop section ------------------------------------- -->
+
+            <section class="section shop-sec">
+                <div class="full-con">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a>
+                        <img src="/user/icons/slash.png" alt="">
+                        <a href="/shop">Shop</a>
+                        <img src="/user/icons/slash.png" alt="">
+                        <a class="active" href="/product">Product</a>
+                    </div>
+
+                    <div class="product-body">
+                        <div class="product-left">
+                            <div class="product-gallery">
+                                <div class="container">
+                                    <div class="mySlides">
+                                        <div class="numbertext">1</div>
+                                        <img src="<%= listing.image %>" style="width:100%">
+                                    </div>
+                                    <!-- Additional Images -->
+                                    <% for (let i=0; i < listing.moreImages.length; i++) { %>
+                                        <% let currentImage=listing.moreImages[i]; %>
+                                            <div class="mySlides">
+                                                <div class="numbertext">
+                                                    <%= i + 2 %>
+                                                </div>
+                                                <img src="<%= currentImage %>" style="width:100%"
+                                                    onclick="currentSlide('<%= i + 2 %>' )" alt="Image <%= i + 2 %>">
+                                            </div>
+                                            <% } %>
+
+
+
+
+                                                <div class="row">
+                                                    <div class="column">
+                                                        <img class="demo cursor" src="<%= listing.image %>"
+                                                            style="width:100%" onclick="currentSlide(1)"
+                                                            alt="The Woods">
+                                                    </div>
+                                                    <% for (let i=0; i < listing.moreImages.length; i++) { %>
+                                                        <% let currentImage=listing.moreImages[i]; %>
+                                                            <div class="column">
+                                                                <img class="demo cursor" src="<%= currentImage %>"
+                                                                    style="width:100%"
+                                                                    onclick="currentSlide('<%= i + 2 %>')"
+                                                                    alt="Image <%= i + 2 %>">
+                                                            </div>
+                                                            <% } %>
+                                                </div>
+                                                <!-- Thumbnail Images -->
+                                                <!-- <div class="row">
+
+                                            </div> -->
+                                </div>
+                            </div>
+                            <div class="product-details">
+                                <h3>Details</h3>
+                                <div class="items">
+                                    <div class="items-title"><img src="/user/icons/date.png" alt="">Buying Year</div>
+                                    <div><span>
+                                            <%= listing.buying %>
+                                        </span></div>
+                                </div>
+                                <div class="items">
+                                    <div class="items-title"><img src="/user/icons/speedometer.png" alt="">kms Driven
+                                    </div>
+                                    <div><span>
+                                            <%= listing.kms %> KM
+                                        </span></div>
+                                </div>
+                                <div class="items">
+                                    <div class="items-title"><img src="/user/icons/medal.png" alt="">Brand</div>
+                                    <div><span>
+                                            <%= listing.model %>
+                                        </span></div>
+                                </div>
+                                <div class="items">
+                                    <div class="items-title"><img src="/user/icons/category.png" alt="">Category</div>
+                                    <div><span>
+                                            <%= listing.category %>
+                                        </span></div>
+                                </div>
+                                <div class="items">
+                                    <div class="items-title"><img src="/user/icons/electric-car.png" alt="">Body Type
+                                    </div>
+                                    <div><span>
+                                            <%= listing.bodyType %>
+                                        </span></div>
+                                </div>
+                                <div class="items">
+                                    <div class="items-title"><img src="/user/icons/oil.png" alt="">Fuel Type</div>
+                                    <div><span>
+                                            <%= listing.fuelType %>
+                                        </span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-right">
+                            <div class="product-right-main">
+                                <h2>
+                                    <%= listing.brand %> <span class="model">
+                                            <%= listing.model %>
+                                        </span>
+                                </h2>
+                                <ul>
+                                    <li>
+                                        <%= listing.kms %> KM
+                                    </li>
+                                    <li class="center">
+                                        <%= listing.buying %>
+                                    </li>
+                                    <li>
+                                        <%= listing.fuelType %>
+                                    </li>
+                                </ul>
+                                <p class="price">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                                </p>
+                                <p>You buy it by calling or chatting</p>
+                                <div class="buy">
+                                    <a href="#" onclick="showPhoneNumber()">
+                                        <button class="call">Call now</button>
+                                    </a>
+                                    <a href="#" onclick="chatWithSeller()"><button>Chat with seller</button></a>
+                                </div>
+
+                                <!-- Update the wishlist button with an id attribute -->
+                                <% if (!isInWishlist) { %>
+                                    <button id="btnWork" class="shortlist" style="color: '<%= wishlistIconColor %>'">
+                                        <i id="wishlistIcon" class="fa-regular fa-heart"
+                                            style="color: '<%= wishlistIconColor %>'"></i>
+                                        <span id="wishlistStatus">
+                                            <%= wishlistStatus %>
+                                        </span>
+                                    </button>
+                                    <% } else { %>
+                                        <button id="wishlistButton" class="shortlist" style="color: red">
+                                            <i id="wishlistIcon" class="fa-solid fa-heart" style="color: red"></i>
+                                            <span id="wishlistStatus">
+                                                Wishlisted
+                                            </span>
+                                        </button>
+                                        <% } %>
+                                            <!-- <form action="/wishList" method="post" style="display: inline-block;">
+                                <input type="hidden" name="_id" value="<%= listing._id %>">
+                                <button class="shortlist"><i class="fa-regular fa-heart"></i><span>Add to
+                                        shortlist</span></button>
+                            </form> -->
+
+                            </div>
+
+                            <div class="product-right-map">
+                                <h4>Posted in</h4>
+                                <div class="map">
+                                    <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+                                        <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div>
+                                        <script>(function () {
+                                                var setting = { "query": "Agartala, Tripura, India", "height": 300, "satellite": false, "zoom": 12, "placeId": "ChIJpyNByQ30UzcRx8hAbDwmodA", "cid": "0xd0a1263c6c40c8c7", "coords": [23.831457, 91.2867777], "lang": "en", "queryString": "Agartala, Tripura, India", "centerCoord": [23.831457, 91.2867777], "id": "map-9cd199b9cc5410cd3b1ad21cab2e54d3", "embed_id": "1026721" };
+                                                var d = document;
+                                                var s = d.createElement('script');
+                                                s.src = 'https://1map.com/js/script-for-user.js?embed_id=1026721';
+                                                s.async = true;
+                                                s.onload = function (e) {
+                                                    window.OneMap.initMap(setting)
+                                                };
+                                                var to = d.getElementsByTagName('script')[0];
+                                                to.parentNode.insertBefore(s, to);
+                                            })();</script><a href="https://1map.com/map-embed">1 Map</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <div id="popup" class="popup" style="display: none;">
+                <!-- <div class="popup-overlay" onclick="closePopup()"></div> -->
+                <div class="popup-content">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <p class="popup-title">Contact Seller</p>
+                    <p class="popup-text">Call now to inquire about the product:</p>
+                    <p id="popupPhoneNumber" class="popup-phone">7005639917</p>
+                    <!-- <button class="popup-button" onclick="callSeller()">Call Now</button> -->
+                </div>
+            </div>
+            <script>
+                // Add this JavaScript function in your script or in a separate script tag
+                function chatWithSeller() {
+                    // Replace '123456789' with the actual phone number of the seller
+                    const sellerPhoneNumber = '123456789';
+
+                    // Check if the device is a phone or tablet
+                    if (/Mobi|Android/i.test(navigator.userAgent)) {
+                        // If it's a phone, open the WhatsApp app with the seller's number
+                        window.location.href = `https://wa.me/${sellerPhoneNumber}`;
+                    } else {
+                        // If it's not a mobile device, open WhatsApp Web in a new tab
+                        window.open(`https://web.whatsapp.com/send?phone=${sellerPhoneNumber}`, '_blank');
+                    }
+                }
+                function showPhoneNumber() {
+                    // Check if the device is a phone or tablet
+                    if (/Mobi|Android/i.test(navigator.userAgent)) {
+                        // If it's a phone, open the dial pad
+                        const phoneNumber = '123456789'; // Replace with the actual phone number
+                        window.location.href = `tel:${phoneNumber}`;
+                    } else {
+                        // If it's a PC or laptop, show the pop-up with the phone number
+                        const popup = document.getElementById('popup');
+                        // const popupPhoneNumber = document.getElementById('popupPhoneNumber');
+                        popupPhoneNumber.textContent = '7005639917'; // Replace with the actual phone number
+                        popup.style.display = 'block';
+                    }
+                }
+
+                function closePopup() {
+                    const popup = document.getElementById('popup');
+                    popup.style.display = 'none';
+                }
+            </script>
+
+            <script>
+                document.getElementById("year").innerHTML = new Date().getFullYear();
+            </script>
+            <script>
+                //silder
+                let slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("demo");
+                    let captionText = document.getElementById("caption");
+                    if (n > slides.length) { slideIndex = 1; }
+                    if (n < 1) { slideIndex = slides.length; }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                    // captionText.innerHTML = dots[slideIndex - 1].alt;
+                }
+            </script>
+            <script>// Assuming you have a variable 'updatedListing' passed from the server
+                const wishlistButton = document.getElementById('btnWork');
+                const wishlistIcon = document.getElementById('wishlistIcon');
+                const wishlistStatusElement = document.getElementById('wishlistStatus');
+
+                // Example usage: Call this function when the user clicks the wishlist button
+                async function handleWishlistSubmission(_id) {
+                    try {
+                        wishlistButton.disabled = true; // Disable the button
+                        const response = await fetch('/wishList', {
+                            method: 'post',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ _id: _id }),
+                        });
+
+                        console.log('Response from server:', response);
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.log('Data received from server:', data);
+
+                            if (data && data.success) {
+                                // Update the UI based on the wishlist status
+                                wishlistStatusElement.textContent = 'Wishlisted';
+                                wishlistIcon.className = 'fa-solid fa-heart'; // Change to filled heart icon
+                                wishlistIcon.style.color = 'red';
+                                wishlistButton.style.color = 'red';
+                                wishlistButton.id = "wishlistButton";
+
+                            } else {
+                                console.error(data ? data.message : 'Unknown error occurred');
+                            }
+                        } else {
+                            console.error('Failed to update wishlist status. HTTP status:', response.status);
+                        }
+                    } catch (error) {
+                        console.error('Error during API call:', error);
+                    }
+                }
+                wishlistButton.removeEventListener('click', handleWishlistSubmission);
+                // Example usage: Call this function on form submission
+                wishlistButton.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default form submission
+                    const _id = '<%= typeof listing !== "undefined" ? listing._id : "" %>';
+                    console.log('_id before calling handleWishlistSubmission:', _id);
+                    handleWishlistSubmission(_id);
+                });
+
+            </script>
+        </body>
+
+        </html>

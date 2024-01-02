@@ -1,0 +1,132 @@
+<% layout('user/layouts/boilerplate') -%>
+
+
+
+    <!-- --------------------------------- shop section ------------------------------------- -->
+
+    <section class="section shop-sec">
+        <div class="full-con">
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <img src="/user/icons/slash.png" alt="">
+                <a class="active" href="profile.ejs">Profile Setting</a>
+            </div>
+            <div class="basic-page">
+                <h2 class="page-title">Profile Setting</h2>
+                <div class="order-profile-grid">
+                    <div class="setting-grid">
+                        <div class="setting-box">
+                            <div class="setting-details">
+                                <div class="profile-img">
+                                    <img src="/user/icons/dummy.jpg" alt="">
+                                </div>
+                                <h6>
+                                    <%= currentUser.displayName %>
+                                </h6>
+                                <p>
+                                    <%= currentUser.phoneNumber %>
+                                </p>
+                                <p>
+                                    <%= currentUser.email %>
+                                </p>
+                            </div>
+                            <div class="setting-menu">
+                                <ul>
+                                    <a href="/order">
+                                        <li>
+                                            <div class="left">
+                                                <img src="/user/icons/package.png" alt="">
+                                                <p>My Orders</p>
+                                            </div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
+                                        </li>
+                                    </a>
+                                    <a href="shortlist.ejs">
+                                        <li>
+                                            <div class="left">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                                <p>Shortlisted Vehicles</p>
+                                            </div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li class="active">
+                                            <div class="left">
+                                                <img src="/user/icons/settings.png" alt="">
+                                                <p>Profile Settings</p>
+                                            </div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
+                                        </li>
+                                    </a>
+                                </ul>
+
+                            </div>
+                            <div class="logout-box">
+                                <a href="/logout"><button>Logout</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <div class="profile-body-box">
+                            <div class="profile-img">
+                                <img src="/user/icons/dummy.jpg" alt="">
+                            </div>
+                            <div>
+                                <h6>
+                                    <%= currentUser.displayName %>
+                                </h6>
+                                <p>
+                                    <%= currentUser.phoneNumber %>
+                                </p>
+                                <p>
+                                    <%= currentUser.email %>
+                                </p>
+                            </div>
+                            <a href="/edit-profile" class="edit-profile">Edit Profile</a>
+                        </div>
+
+                        <div class="profile-body-box">
+                            <div>
+                                <h5>Password</h5>
+                                <p>xxxxxxxxx</p>
+                            </div>
+                            <a href="/change-password" class="edit-profile">Change Password</a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- --------------------------------- footer Section ------------------------------------- -->
+    <footer>
+        <div class="subscribe-sec">
+            <div class="full-con">
+                <div class="subscribe">
+                    <h2>Get the latest updates!</h2>
+                    <p>Subscribe to our newsletter and stay updated on the letest developments.</p>
+                    <form action="">
+                        <input type="email" name="" id="" placeholder="Enter your email">
+                        <input type="submit" value="Subscribe">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- --------------------------------- footer menu ------------------------------------- -->
+
+
+
+
+        <script src="js/script.js"></script>
+        <script>
+            document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+        </body>
+
+        </html>

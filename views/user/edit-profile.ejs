@@ -1,0 +1,121 @@
+<% layout('user/layouts/boilerplate') -%>
+
+
+    <!-- --------------------------------- shop section ------------------------------------- -->
+
+    <section class="section shop-sec">
+        <div class="full-con">
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <img src="/user/icons/slash.png" alt="">
+                <a class="active" href="/profile">Profile Setting</a>
+                <img src="/user/icons/slash.png" alt="">
+                <a class="active" href="/edit-profile">Edit Profile</a>
+            </div>
+            <div class="basic-page">
+                <h2 class="page-title">Profile Setting</h2>
+                <div class="order-profile-grid">
+                    <div class="setting-grid">
+                        <div class="setting-box">
+                            <div class="setting-details">
+                                <div class="profile-img">
+                                    <img src="/user/icons/dummy.jpg" alt="">
+                                </div>
+                                <h6>
+                                    <%= currentUser.displayName %>
+                                </h6>
+                                <p>
+                                    <%= currentUser.phoneNumber %>
+                                </p>
+                                <p>
+                                    <%= currentUser.email %>
+                                </p>
+                            </div>
+                            <div class="setting-menu">
+                                <ul>
+                                    <a href="/order">
+                                        <li>
+                                            <div class="left">
+                                                <img src="/user/icons/package.png" alt="">
+                                                <p>My Orders</p>
+                                            </div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
+                                        </li>
+                                    </a>
+                                    <a href="/shortlist">
+                                        <li>
+                                            <div class="left">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                                <p>Shortlisted Vehicles</p>
+                                            </div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li class="active">
+                                            <div class="left">
+                                                <img src="/user/icons/settings.png" alt="">
+                                                <p>Profile Settings</p>
+                                            </div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
+                                        </li>
+                                    </a>
+                                </ul>
+
+                            </div>
+                            <div class="logout-box">
+                                <a href="/logout"><button>Logout</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <div class="edit-profile-box">
+                            <h2>Account Details</h2>
+                            <p>Edit my profile to reflect the essence of who I am.</p>
+                            <form action="">
+                                <input type="text" name="" id="" value="Bishal Acharjee" placeholder="Full name"
+                                    required>
+                                <div class="form-flex">
+                                    <input type="tel" name="" id="" value="8837310955" placeholder="Phone no" required>
+                                    <input type="email" name="" id="" value="bishal23@gmail.com" placeholder="Email Id"
+                                        required>
+                                </div>
+                                <input type="text" name="" id="" placeholder="Location">
+                                <div class="form-flex">
+                                    <input type="text" name="" id="" placeholder="State">
+                                    <input type="text" name="" id="" placeholder="City">
+                                </div>
+
+                                <div class="form-flex">
+                                    <input type="text" name="" id="" placeholder="District">
+                                    <input type="number" name="" id="" placeholder="Zip">
+                                </div>
+                                <div class="upload-file">
+                                    <label for="">Upload Photo</label>
+                                    <input type="file" name="" id="" class="custom-file-input">
+                                </div>
+
+                                <input type="submit" value="Save Changes">
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- --------------------------------- footer Section ------------------------------------- -->
+
+
+
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+    </body>
+
+    </html>

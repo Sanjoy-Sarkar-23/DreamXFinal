@@ -1,0 +1,200 @@
+<% layout('user/layouts/boilerplate') -%>
+
+<body>
+    <section class="section shop-sec">
+        <div class="full-con">
+            <div class="breadcrumb">
+                <a href="index.ejs">Home</a>
+                <img src="/user/icons/slash.png" alt="">
+                <a class="active" href="/shop">Shop</a>
+            </div>
+            <div class="shop-body">
+                <div class="shop-grid">
+                    <div class="shop-filter" id="myfilter">
+                        <form id="filterForm">
+                            <div class="filter-box">
+                                <h3>Price</h3>
+                                <div class="item">
+                                    <input type="radio" name="price" id="low-to-high" onchange="applyFilters()">
+                                    <label for="low-to-high">Low to High</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" name="price" id="high-to-low" onchange="applyFilters()">
+                                    <label for="high-to-low">High to Low</label>
+                                </div>
+                            </div>
+
+                            <!-- Add other filter options with onchange events -->
+
+                            <button type="button" onclick="applyFilters()">Apply Filter</button>
+                        </form>
+                    </div>
+                    <div class="shop-product-grid" id="shopProductGrid">
+                        <!-- Product items will be dynamically added here -->
+                        <% for(let listing of allListings) { %>
+                            <a href="/product/<%= listing._id %>">
+                                <div class="product-box">
+                                    <div class="product-img">
+                                        <img src="<%= listing.image %>" alt="">
+                                    </div>
+                                    <div class="product-dt">
+                                        <div class="product-name-wishlist">
+                                            <div class="product-name">
+                                                <h3><%= listing.brand %></h3>
+                                                <p><%= listing.model %></p>
+                                            </div>
+                                            <div class="wishlist">
+                                                <img src="/user/icons/wishlist.png" alt="">
+                                            </div>
+                                        </div>
+                                        <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
+                                        <ul>
+                                            <li><%= listing.price.toLocaleString("en-IN") %> KM</li>
+                                            <li class="center"><%= listing.buying %></li>
+                                            <li><%= listing.fuelType %></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/js/script.js"></script>
+    <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
+
+
+<!-- ... Your existing HTML code ... -->
+
+<div class="product-gallery">
+    <div class="container">
+        <% let primaryImage = listing.image; %>
+        
+        <!-- Primary Image -->
+        <div class="mySlides">
+            <div class="numbertext">1</div>
+            <img src="<%= primaryImage %>" style="width:100%" onclick="currentSlide(1)" alt="Primary Image">
+        </div>
+
+        <!-- Additional Images -->
+        <% for (let i = 0; i < listing.moreImages.length; i++) { %>
+            <% let currentImage = listing.moreImages[i]; %>
+            <div class="mySlides">
+                <div class="numbertext"><%= i + 2 %></div>
+                <img src="<%= currentImage %>" style="width:100%" onclick="currentSlide(<%= i + 2 %>)" alt="Image <%= i + 2 %>">
+            </div>
+        <% } %>
+
+
+
+        <!-- Thumbnail Images -->
+        <div class="row">
+            <% for (let i = 0; i < listing.moreImages.length; i++) { %>
+                <% let currentImage = listing.moreImages[i]; %>
+                <div class="column">
+                    <img class="demo cursor" src="<%= currentImage %>" style="width:100%" onclick="currentSlide(<%= i + 2 %>)" alt="Image <%= i + 2 %>">
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="product-gallery">
+                            <div class="container">
+                                <div class="mySlides">
+                                    <div class="numbertext">1</div>
+                                    <img src="<%= listing.image %>" style="width:100%">
+                                </div>
+
+                                <!-- <% for (let i=1; i <=5; i++) { %>
+                                    <% if (listing[`image${i}`]) { %>
+                                        <div class="mySlides">
+                                            <div class="numbertext">
+                                                <%= i + 1 %>
+                                            </div>
+                                            <img src="<%= listing[`image${i}`] %>" style="width:100%">
+                                        </div>
+                                        <% } %>
+                                            <% } %> -->
+
+                                <!-- <div class="mySlides">
+                                    <div class="numbertext">2 / 6</div>
+                                    <img src=<%=listing.imageOne %> style="width:100%">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">3 / 6</div>
+                                    <img src=<%=listing.imageTwo %> style="width:100%">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">4 / 6</div>
+                                    <img src=<%=listing.imageThree %> style="width:100%">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">5 / 6</div>
+                                    <img src=<%=listing.imageFour %> style="width:100%">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">6 / 6</div>
+                                    <img src=<%=listing.imageFive %> style="width:100%">
+                                </div> -->
+
+                                <!-- <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a> -->
+
+
+
+                                <div class="row">
+                                    <div class="column">
+                                        <img class="demo cursor" src="<%= listing.image %>" style="width:100%"
+                                            onclick="currentSlide(1)" alt="The Woods">
+                                    </div>
+                                    <!-- <% for (let i=1; i <=5; i++) { %>
+                                                        <% if (listing[`image${i}`]) { %>
+                                                            <div class="column">
+                                                                <img class="demo cursor"
+                                                                    src="<%= listing[`image${i}`] %>" style="width:100%"
+                                                                    onclick="currentSlide'(<%= i + 1 %>)'"
+                                                                    alt="Image <%= i + 1 %>">
+                                                            </div>
+                                                            <% } %>
+                                                                <% } %> -->
+                                    <!-- <div class="column">
+                                        <img class="demo cursor" src=<%=listing.imageOne %> style="width:100%"
+                                        onclick="currentSlide(2)" alt="Cinque Terre">
+                                    </div>
+                                    <div class="column">
+                                        <img class="demo cursor" src=<%=listing.imageTwo %> style="width:100%"
+                                        onclick="currentSlide(3)" alt="Mountains and fjords">
+                                    </div>
+                                    <div class="column">
+                                        <img class="demo cursor" src=<%=listing.imageThree %> style="width:100%"
+                                        onclick="currentSlide(4)" alt="Northern Lights">
+                                    </div>
+                                    <div class="column">
+                                        <img class="demo cursor" src=<%=listing.imageFour %> style="width:100%"
+                                        onclick="currentSlide(5)" alt="Nature and sunrise">
+                                    </div>
+                                    <div class="column">
+                                        <img class="demo cursor" src=<%=listing.imageFive %> style="width:100%"
+                                        onclick="currentSlide(6)" alt="Snowy Mountains">
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+<!-- ... Your existing HTML code ... -->
