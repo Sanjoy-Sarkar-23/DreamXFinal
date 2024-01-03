@@ -59,7 +59,6 @@ const adminController = {
                 image,
                 price,
                 moreImages,
-                createdAt,
             });
 
             // Redirect to the vehicle page after creating the new listing

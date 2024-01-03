@@ -114,7 +114,7 @@ app.use((req, res, next) => {
 
 // Use the routes
 app.use('/', authRoutes);
-app.use('/', isAdminMiddleware, adminRoutes);
+app.use('/', adminRoutes);
 app.use('/', userRoutes);
 
 

@@ -185,45 +185,65 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="validationCustom02" class="form-label">Upload
-                                                        Photos</label>
+                                                    <label for="validationCustom02" class="form-label">Primary
+                                                        Image Url</label>
+                                                    <div class="input-group">
+                                                        <input type="text" name="image" value="<%= listing.image %>"
+                                                            class="form-control" id="customFile" multiple>
 
-                                                    <input type="file" class="form-control" value="<%= listing.image %>"
-                                                        id="customFile" multiple>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                        </div>
-                                        <br>
 
-                                        <div>
-
-                                            <input class="btn btn-primary" type="submit" value="Update">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom02" class="form-label">Additional
+                                                        Image Url</label>
+                                                    <div class="input-group">
+                                                        <input type="text" name="moreImages" placeholder="Image Url One"
+                                                            class="form-control" multiple>
+                                                        <button type="button"
+                                                            class="btn btn-secondary addImageField">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </form>
+
+                                        <!-- Container to hold dynamically added image fields -->
+                                        <div id="imageFieldsContainer"></div>
+
                             </div>
+                            <br>
+
+                            <div>
+
+                                <input class="btn btn-primary" type="submit" value="Update">
+                            </div>
+                            </form>
                         </div>
-                    </div> <!-- end col -->
+                    </div>
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+    </div>
+    <!-- End Page-content -->
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
                 </div>
-                <!-- end row -->
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Designe and Developed by
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- End Page-content -->
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block">
-                            Designe and Developed by
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    </footer>
 
     </div>
     <!-- end main content-->
