@@ -26,9 +26,37 @@ const userController = {
 
 
 
-    shortlist: (req, res) => {
-        res.render("user/shortlist");
+    shortlist: async (req, res) => {
+        try {
+            // Fetch user ID from the request or your authentication system
+            const userId = req.user._id; // Assuming you have user information in the request
+
+            // Fetch user's wishlist based on the user ID
+            const userWishlist = await Listing.find({ wishListUser: { $in: [userId] } });
+
+            const pageTitle = "Wishlist";
+            res.render("user/shortlist", { pageTitle, userWishlist });
+        } catch (error) {
+            console.error('Error fetching wishlist:', error);
+            res.status(500).send('Internal Server Error');
+        }
     },
+
+    // wishlist: async (req, res) => {
+    //     try {
+    //         // Fetch user ID from the request or your authentication system
+    //         const userId = req.user._id; // Assuming you have user information in the request
+
+    //         // Fetch user's wishlist based on the user ID
+    //         const userWishlist = await User.findById(userId).populate('wishlist');
+
+    //         const pageTitle = "Wishlist";
+    //         res.render('wishlist', { pageTitle, userWishlist });
+    //     } catch (error) {
+    //         console.error('Error fetching wishlist:', error);
+    //         res.status(500).send('Internal Server Error');
+    //     }
+    // },
 
     shop: async (req, res, next) => {
         try {
@@ -229,7 +257,34 @@ const userController = {
             return { success: false, message: 'Internal server error.' };
         }
 
+    },
+    wishlistRemove: async (req, res, next) => {
+        console.log('req.body:', req.body);
+        const { _id } = req.body;
+        console.log('_id:', _id);
+        const userId = req.user._id;
+
+        try {
+            // Update wishListUser field by removing the user ID using $pull
+            const updatedListing = await Listing.findByIdAndUpdate(
+                _id,
+                { $pull: { wishListUser: userId } },
+                { new: true }
+            );
+
+            console.log(updatedListing);
+
+            if (!updatedListing) {
+                return res.json({ success: false, message: 'Listing not found' });
+            }
+
+            return res.json({ success: true, message: 'Listing removed from wishlist successfully' });
+        } catch (error) {
+            console.error('Error removing from wishlist:', error);
+            return res.json({ success: false, message: 'Internal server error.' });
+        }
     }
+
 
 };
 

@@ -226,3 +226,42 @@ function closeFilter() {
 
 //   applyFilters(); // Call applyFilters once when the page loads
 // });
+
+
+async function removeFromWishlist(listingId) {
+  try {
+    const response = await fetch('/wishlist/remove', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ _id: listingId })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // If successful, remove the listing from the DOM
+      const listingElement = document.getElementById('listing_' + listingId);
+      if (listingElement) {
+        listingElement.remove();
+      }
+
+      // Check if wishlist is empty after removal
+      const wishlistContainer = document.getElementById('wishlist-container');
+      if (!wishlistContainer || wishlistContainer.children.length === 0) {
+        // Display a message indicating that the wishlist is empty
+        const emptyWishlistMessage = document.createElement('div');
+        emptyWishlistMessage.className = 'empty-wishlist-message';
+        emptyWishlistMessage.innerText = 'Your wishlist is empty.';
+        wishlistContainer.appendChild(emptyWishlistMessage);
+      }
+    } else {
+      // Handle error if needed
+      console.error('Error removing from wishlist:', result.message);
+    }
+  } catch (error) {
+    // Handle error if needed
+    console.error('Error removing from wishlist:', error);
+  }
+}

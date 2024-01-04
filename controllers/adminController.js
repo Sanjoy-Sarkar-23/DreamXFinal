@@ -63,7 +63,7 @@ const adminController = {
 
             // Redirect to the vehicle page after creating the new listing
             req.flash('successMessage', 'Listing created successfully.');
-            res.redirect('/vehicle');
+            res.redirect('/admin/vehicle');
 
         } catch (error) {
             console.error('Error creating new listing:', error);
@@ -216,7 +216,7 @@ const adminController = {
             // Successful update
             console.log('Updated Listing:', updatedListing);
             req.flash('successMessage', 'Listing updated successfully.');
-            res.redirect('/vehicle'); // Send a JSON response
+            res.redirect('/admin/vehicle'); // Send a JSON response
 
         } catch (error) {
             console.error('Error updating listing:', error);

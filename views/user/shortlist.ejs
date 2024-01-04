@@ -20,9 +20,15 @@
                                 <div class="profile-img">
                                     <img src="/user/icons/dummy.jpg" alt="">
                                 </div>
-                                <h6>Bishal Acharjee</h6>
-                                <p>8873310967</p>
-                                <p>bishal9876@gmail.com</p>
+                                <h6>
+                                    <%= currentUser.displayName %>
+                                </h6>
+                                <p>
+                                    <%= currentUser.phoneNumber %>
+                                </p>
+                                <p>
+                                    <%= currentUser.email %>
+                                </p>
                             </div>
                             <div class="setting-menu">
                                 <ul>
@@ -61,88 +67,111 @@
                             </div>
                         </div>
                     </div>
-                    <div class="shortlist-body">
-                        <div class="product-grid">
-                            <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
-                            <div class="left">
-                                <img src="images/product/bike2.webp" alt="">
-                            </div>
-                            <div class="right">
-                                <h2>Royal Enfield Classic 350</h2>
-                                <h6>2015 16 Model</h6>
-                                <p class="price">&#8377; 1,20,000</p>
-                                <ul>
-                                    <li>34,580 KM</li>
-                                    <li class="center">2017</li>
-                                    <li>Petrol</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-grid">
-                            <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
-                            <div class="left">
-                                <img src="images/product/bike2.webp" alt="">
-                            </div>
-                            <div class="right">
-                                <h2>Royal Enfield Classic 350</h2>
-                                <h6>2015 16 Model</h6>
-                                <p class="price">&#8377; 1,20,000</p>
-                                <ul>
-                                    <li>34,580 KM</li>
-                                    <li class="center">2017</li>
-                                    <li>Petrol</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-grid">
-                            <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
-                            <div class="left">
-                                <img src="images/product/bike2.webp" alt="">
-                            </div>
-                            <div class="right">
-                                <h2>Royal Enfield Classic 350</h2>
-                                <h6>2015 16 Model</h6>
-                                <p class="price">&#8377; 1,20,000</p>
-                                <ul>
-                                    <li>34,580 KM</li>
-                                    <li class="center">2017</li>
-                                    <li>Petrol</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-grid">
-                            <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
-                            <div class="left">
-                                <img src="images/product/bike2.webp" alt="">
-                            </div>
-                            <div class="right">
-                                <h2>Royal Enfield Classic 350</h2>
-                                <h6>2015 16 Model</h6>
-                                <p class="price">&#8377; 1,20,000</p>
-                                <ul>
-                                    <li>34,580 KM</li>
-                                    <li class="center">2017</li>
-                                    <li>Petrol</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-grid">
-                            <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
-                            <div class="left">
-                                <img src="images/product/bike2.webp" alt="">
-                            </div>
-                            <div class="right">
-                                <h2>Royal Enfield Classic 350</h2>
-                                <h6>2015 16 Model</h6>
-                                <p class="price">&#8377; 1,20,000</p>
-                                <ul>
-                                    <li>34,580 KM</li>
-                                    <li class="center">2017</li>
-                                    <li>Petrol</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="shortlist-body" id="wishlist-container">
+                        <% if (userWishlist.length> 0) { %>
+                            <% userWishlist.forEach(listing=> { %>
+                                <div class="product-grid" id="listing_<%= listing._id %>">
+                                    <button class="close" onclick="removeFromWishlist('<%= listing._id %>')"><img
+                                            src="/user/icons/close-button.png" alt=""></button>
+
+                                    <div class="left">
+                                        <img src="<%= listing.image %>" alt="">
+                                    </div>
+                                    <div class="right">
+                                        <h2>
+                                            <%= listing.brand %>
+                                                <%= listing.name %>
+                                        </h2>
+                                        <h6>
+                                            <%= listing.model %>
+                                        </h6>
+                                        <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <%= listing.kms.toLocaleString("en-IN") %> KM
+                                            </li>
+                                            <li class="center">
+                                                <%= listing.buying %>
+                                            </li>
+                                            <li>
+                                                <%= listing.fuelType %>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <% }); %>
+
+                                    <!-- <div class="product-grid">
+                                    <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
+                                    <div class="left">
+                                        <img src="images/product/bike2.webp" alt="">
+                                    </div>
+                                    <div class="right">
+                                        <h2>Royal Enfield Classic 350</h2>
+                                        <h6>2015 16 Model</h6>
+                                        <p class="price">&#8377; 1,20,000</p>
+                                        <ul>
+                                            <li>34,580 KM</li>
+                                            <li class="center">2017</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-grid">
+                                    <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
+                                    <div class="left">
+                                        <img src="images/product/bike2.webp" alt="">
+                                    </div>
+                                    <div class="right">
+                                        <h2>Royal Enfield Classic 350</h2>
+                                        <h6>2015 16 Model</h6>
+                                        <p class="price">&#8377; 1,20,000</p>
+                                        <ul>
+                                            <li>34,580 KM</li>
+                                            <li class="center">2017</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-grid">
+                                    <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
+                                    <div class="left">
+                                        <img src="images/product/bike2.webp" alt="">
+                                    </div>
+                                    <div class="right">
+                                        <h2>Royal Enfield Classic 350</h2>
+                                        <h6>2015 16 Model</h6>
+                                        <p class="price">&#8377; 1,20,000</p>
+                                        <ul>
+                                            <li>34,580 KM</li>
+                                            <li class="center">2017</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-grid">
+                                    <button class="close"><img src="/user/icons/close-button.png" alt=""></button>
+                                    <div class="left">
+                                        <img src="images/product/bike2.webp" alt="">
+                                    </div>
+                                    <div class="right">
+                                        <h2>Royal Enfield Classic 350</h2>
+                                        <h6>2015 16 Model</h6>
+                                        <p class="price">&#8377; 1,20,000</p>
+                                        <ul>
+                                            <li>34,580 KM</li>
+                                            <li class="center">2017</li>
+                                            <li>Petrol</li>
+                                        </ul>
+                                    </div>
+                                </div> -->
                     </div>
+                    <% } else { %>
+                        <div class="empty-wishlist-message">
+                            Your wishlist is empty.
+                        </div>
+                        <% } %>
                 </div>
 
             </div>

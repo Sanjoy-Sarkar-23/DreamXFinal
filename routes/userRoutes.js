@@ -17,6 +17,7 @@ router.get('/change-password', isAdminMiddleware, userController.changePassword)
 router.get('/edit-profile', isAdminMiddleware, userController.editProfile);
 router.get('/profile', isAdminMiddleware, userController.userProfile);
 router.post('/wishList', isAdminMiddleware, userController.wishList);
+router.post('/wishList/remove', isAdminMiddleware, userController.wishlistRemove);
 
 
 module.exports = router;

@@ -16,7 +16,7 @@ const User = require('./models/user');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const userRoutes = require('./routes/userRoutes');
-const { isAdminMiddleware } = require('./routes/middleware');
+
 
 const app = express();
 const dbUrl = process.env.ATLASDB_URL;
@@ -95,18 +95,18 @@ app.use((req, res, next) => {
     next();
 });
 
-// // Middleware to check if the user is an admin
-// const isAdminMiddleware = (req, res, next) => {
-//     // Assuming that user information is stored in req.user after authentication
-//     if (req.isAuthenticated() && req.user && req.user.isAdmin === true) {
-//         // User is authenticated and is an admin, allow access to the route
-//         return next();
-//     } else {
-//         // User is not authenticated or is not an admin, redirect to '/' or handle accordingly
-//         req.flash('error', 'You do not have permission to access this page.');
-//         return res.redirect('/login');
-//     }
-// };
+// Middleware to check if the user is an admin
+const isAdminMiddleware = (req, res, next) => {
+    // Assuming that user information is stored in req.user after authentication
+    if (req.isAuthenticated() && req.user && req.user.isAdmin === true) {
+        // User is authenticated and is an admin, allow access to the route
+        return next();
+    } else {
+        // User is not authenticated or is not an admin, redirect to '/' or handle accordingly
+        req.flash('error', 'You do not have permission to access this page.');
+        return res.redirect('/login');
+    }
+};
 
 
 
@@ -114,7 +114,7 @@ app.use((req, res, next) => {
 
 // Use the routes
 app.use('/', authRoutes);
-app.use('/', adminRoutes);
+app.use('/admin', isAdminMiddleware, adminRoutes);
 app.use('/', userRoutes);
 
 

@@ -1,7 +1,7 @@
 const userController = {
     isAdminMiddleware: (req, res, next) => {
         // Assuming that user information is stored in req.user after authentication
-        if (req.isAuthenticated() && req.user && req.user.isAdmin === true) {
+        if (req.isAuthenticated()) {
             // User is authenticated and is an admin, allow access to the route
             return next();
         } else {
