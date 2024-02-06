@@ -35,7 +35,7 @@
                                 <br>
                                 <h2 class="card-title">Add new vehicle</h4>
                                     <br>
-                                    <form method="post" action="/admin/add_vehicle">
+                                    <form method="post" action="/admin/add_vehicle" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -187,9 +187,8 @@
                                                     <label for="validationCustom02" class="form-label">Primary
                                                         Image Url</label>
                                                     <div class="input-group">
-                                                        <input type="text" name="image" class="form-control"
-                                                            id="customFile" multiple>
-
+                                                        <input type="file" name="images" class="form-control"
+                                                            id="customFile">
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,8 +199,8 @@
                                                     <label for="validationCustom02" class="form-label">Additional
                                                         Image Url</label>
                                                     <div class="input-group">
-                                                        <input type="text" name="moreImages" placeholder="Image Url One"
-                                                            class="form-control" multiple>
+                                                        <input type="file" name="moreImages" placeholder="Image Url One"
+                                                            class="form-control">
                                                         <button type="button"
                                                             class="btn btn-secondary addImageField">+</button>
                                                     </div>

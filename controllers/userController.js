@@ -116,17 +116,19 @@ const userController = {
 
             // Validate if the provided ID is a valid ObjectId
             if (!mongoose.Types.ObjectId.isValid(id)) {
-                return res.status(400).send('Invalid product ID');
+                req.flash('error', 'Listing does not exist!');
+                return res.redirect('/');
             }
 
             const listing = await Listing.findById(id);
 
             if (!listing) {
-                return res.status(404).send('Product not found');
+                req.flash('error', 'Listing does not exist!');
+                return res.redirect('/');
             }
 
             // Check if the user is in the wishlist for this product
-            const userId = req.user ? req.user._id : null; // Assuming user information is stored in req.user
+            const userId = req.user ? req.user._id : null;
 
             let isInWishlist = false;
             if (userId) {
@@ -139,6 +141,7 @@ const userController = {
             res.status(500).send('Internal Server Error');
         }
     },
+
     // try {
     //     let { id } = req.params;
     //     const listing = await Listing.findById(id);
@@ -283,7 +286,12 @@ const userController = {
             console.error('Error removing from wishlist:', error);
             return res.json({ success: false, message: 'Internal server error.' });
         }
+    },
+    success: (req, res) => {
+        req.flash('success', 'Operation successful!');
+        res.redirect('/');
     }
+
 
 
 };

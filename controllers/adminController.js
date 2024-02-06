@@ -2,6 +2,12 @@
 const mongoose = require('mongoose');
 const Listing = require('../models/listing.js');
 const User = require('../models/user.js');
+const multer = require('multer');
+const { cloudinary, storage } = require('../cloudconfig.js');
+// const storages = multer.memoryStorage()
+
+const upload = multer({ storage })
+
 
 const adminController = {
     admin: async (req, res) => {
@@ -15,56 +21,75 @@ const adminController = {
         }
     },
     add_order: async (req, res) => {
+
         const pageTitle = "Dashboard | Add Order";
         // Render the admin view with the data
         res.render('admin/add-order', { pageTitle });
     },
     createListing: async (req, res) => {
         try {
-            const {
-                buying,
-                name,
-                kms,
-                brand,
-                model,
-                category,
-                bodyType,
-                fuelType,
-                description,
-                image,
-                price,
-                moreImages,
-            } = req.body;
+            upload.fields([{ name: 'images', maxCount: 1 }, { name: 'moreImages' }])(req, res, async (err) => {
+                if (err) {
+                    console.error('Error uploading images:', err);
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Image upload failed.'
+                    });
+                }
 
-            // Validate required fields
-            if (!buying || !name || !brand || !model || !category || !bodyType || !fuelType || !description || !price || Array.isArray(moreImages)) {
-                console.error('Invalid request body:', req.body);
-                return res.status(400).json({
-                    success: false,
-                    message: 'Please fill in all required fields.'
+                const {
+                    buying,
+                    name,
+                    kms,
+                    brand,
+                    model,
+                    category,
+                    bodyType,
+                    fuelType,
+                    description,
+                    price,
+                } = req.body;
+
+                if (!buying || !name || !kms || !brand || !model || !category || !bodyType || !fuelType || !description || !price) {
+                    console.error('Invalid request body:', req.body);
+                    return res.status(400).json({
+                        success: false,
+                        message: 'Please fill in all required fields.'
+                    });
+                }
+
+                // Retrieve the image URLs from Cloudinary
+                const mainImage = req.files['images'][0];
+                const moreImages = req.files['moreImages'] || []; // Handle the case where moreImages is not provided
+
+                // Check the length of moreImages
+                if (moreImages.length > 4) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'More images can have a maximum of 4 items.'
+                    });
+                }
+
+                // Create a new listing in MongoDB
+                const newListing = await Listing.create({
+                    buying,
+                    name,
+                    kms,
+                    brand,
+                    model,
+                    category,
+                    bodyType,
+                    fuelType,
+                    description,
+                    images: { url: mainImage.path, filename: mainImage.filename },
+                    moreImages: moreImages.map(image => ({ url: image.path, filename: image.filename })),
+                    price,
                 });
-            }
-
-            // Create a new listing
-            const newListing = await Listing.create({
-                buying,
-                name,
-                kms,
-                brand,
-                model,
-                category,
-                bodyType,
-                fuelType,
-                description,
-                image,
-                price,
-                moreImages,
+                console.error('Error creating new listing:', newListing);
+                // Redirect to the vehicle page after creating the new listing
+                req.flash('successMessage', 'Listing created successfully.');
+                res.redirect('/admin/vehicle');
             });
-
-            // Redirect to the vehicle page after creating the new listing
-            req.flash('successMessage', 'Listing created successfully.');
-            res.redirect('/admin/vehicle');
-
         } catch (error) {
             console.error('Error creating new listing:', error);
             res.status(500).json({
@@ -73,6 +98,7 @@ const adminController = {
             });
         }
     },
+
 
     add_vehicle: (req, res) => {
         // Fetch data from the admin model
@@ -201,29 +227,58 @@ const adminController = {
         try {
             // Validate if the provided ID is a valid ObjectId
             if (!mongoose.Types.ObjectId.isValid(itemId)) {
-                return res.status(400).json({ success: false, message: 'Invalid item ID' });
+                req.flash('error', 'Listing does not exist!');
+                return res.redirect('/admin');
             }
 
-            // Find the listing by ID and update it with the data from the request body
-            let updatedListing = await Listing.findByIdAndUpdate(itemId, req.body, { new: true });
+            // Use multer to upload images
+            upload.fields([{ name: 'images', maxCount: 1 }, { name: 'moreImages' }])(req, res, async (err) => {
+                if (err) {
+                    console.error('Error uploading images:', err);
+                    return res.status(500).json({
+                        success: false,
+                        message: 'Image upload failed.'
+                    });
+                }
 
-            // Check if the item was successfully updated
-            if (!updatedListing) {
-                // Item not found, handle accordingly
-                return res.status(404).json({ success: false, message: 'Item not found' });
-            }
+                // Find the listing by ID
+                let listing = await Listing.findById(itemId);
 
-            // Successful update
-            console.log('Updated Listing:', updatedListing);
-            req.flash('successMessage', 'Listing updated successfully.');
-            res.redirect('/admin/vehicle'); // Send a JSON response
+                // Check if the item was found
+                if (!listing) {
+                    // Item not found, handle accordingly
+                    req.flash('error', 'Listing does not exist!');
+                    return res.redirect('/admin');
+                }
 
+                // Update the listing with the data from the request body
+                listing = Object.assign(listing, req.body);
+
+                // Update the image URLs if new images are provided
+                if (req.files['images'] && req.files['images'].length > 0) {
+                    const mainImage = req.files['images'][0];
+                    listing.images = { url: mainImage.path, filename: mainImage.filename };
+                }
+
+                if (req.files['moreImages'] && req.files['moreImages'].length > 0) {
+                    const moreImages = req.files['moreImages'];
+                    listing.moreImages = moreImages.map(image => ({ url: image.path, filename: image.filename }));
+                }
+
+                // Save the updated listing
+                let updatedListing = await listing.save();
+
+                // Successful update
+                console.log('Updated Listing:', updatedListing);
+                req.flash('success', 'Listing updated successfully.');
+                res.redirect('/admin/vehicle');
+            });
         } catch (error) {
             console.error('Error updating listing:', error);
-            res.status(500).json({ success: false, message: 'Internal server error.' });
+            req.flash('error', 'Listing updated Unsuccessfully.');
+            return res.redirect('/admin');
         }
     },
-
 
 
 

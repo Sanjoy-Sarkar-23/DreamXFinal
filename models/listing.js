@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
 const listingSchema = new Schema({
     buying: {
         type: Number,
@@ -20,7 +19,6 @@ const listingSchema = new Schema({
         type: String,
         required: true
     },
-
     category: {
         type: String,
         trim: true,
@@ -38,17 +36,31 @@ const listingSchema = new Schema({
         type: String,
         required: true
     },
-    image: {
-        type: String,
-        default: "https://imgd.aeplcdn.com/1056x594/n/cw/ec/102709/ntorq-125-right-front-three-quarter.jpeg?isig=0&q=80&wm=2",
-        set: (v) => v === "" ?
-            "https://images.unsplash.com/photo-1536782376847-5c9d14d97cc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJlZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" : v,
+    images: [{
+        url: String,
+        filename: String
+    }],
+    moreImages: {
+        type: [{
+            url: String,
+            filename: String
+        }],
+        validate: [
+            {
+                validator: function (value) {
+                    return value.length <= 4;
+                },
+                message: 'More images can have a maximum of 4 items.'
+            },
+            {
+                validator: function (value) {
+                    return value.length >= 0;
+                },
+                message: 'More images must have a minimum of 0 items (can be null).'
+            }
+        ]
     },
     price: Number,
-    moreImages: {
-        type: [String],  // An array of strings for multiple image URLs
-        default: [],    // Default to an empty array
-    },
     isStatus: {
         type: Boolean,
         default: true,
@@ -63,7 +75,6 @@ const listingSchema = new Schema({
             });
         },
         set: function (value) {
-            // Assuming `value` is a date string in "dd/mm/yyyy" format
             const parts = value.split('/');
             this._createdAt = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
         }
@@ -72,8 +83,7 @@ const listingSchema = new Schema({
         type: [String],
         default: [],
     }
-
 });
 
-const Listing = mongoose.model("Producet", listingSchema);
+const Listing = mongoose.model("Product", listingSchema);
 module.exports = Listing;

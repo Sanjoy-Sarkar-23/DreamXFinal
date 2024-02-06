@@ -51,6 +51,7 @@ const authController = {
             // Handle specific duplicate key error for email uniqueness
             if (error.name === 'MongoError' && error.code === 11000) {
                 req.flash('error', 'An account with this email already exists. Please use a different email.');
+
                 return res.redirect('/signup');
             }
 
@@ -84,6 +85,7 @@ const authController = {
             }
 
             if (!user) {
+
                 req.flash('error', 'Invalid username or password.');
                 return res.redirect('/login');
             }
@@ -95,7 +97,7 @@ const authController = {
                     return res.redirect('/login');
                 }
 
-                req.flash('success', 'Welcome back!');
+                req.flash('success', 'Welcome To DreamX');
 
                 // Check if the user is an admin
                 if (user.isAdmin === true) {
@@ -116,6 +118,7 @@ const authController = {
 
         req.logout(function (err) {
             if (err) { return next(err); }
+            req.flash('success', 'Logout Successfully');
             res.redirect('/');
         });
     },

@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
 
+
+
+
 // Define routes for the admin
 router.get('/', adminController.admin);
 router.get('/add_order', adminController.add_order);

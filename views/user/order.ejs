@@ -6,8 +6,8 @@
     <section class="section shop-sec">
         <div class="full-con">
             <div class="breadcrumb">
-                <a href="index.ejs">Home</a>
-                <img src="slash.png" alt="">
+                <a href="/">Home</a>
+                <img src="/user/icons/slash.png" alt="">
                 <a class="active" href="/order">Orders</a>
             </div>
             <div class="basic-page">
@@ -17,46 +17,52 @@
                         <div class="setting-box">
                             <div class="setting-details">
                                 <div class="profile-img">
-                                    <img src="dummy.jpg" alt="">
+                                    <img src="/user/icons/dummy.jpg" alt="">
                                 </div>
-                                <h6>Bishal Acharjee</h6>
-                                <p>8873310967</p>
-                                <p>bishal9876@gmail.com</p>
+                                <h6>
+                                    <%= currentUser.displayName %>
+                                </h6>
+                                <p>
+                                    <%= currentUser.phoneNumber %>
+                                </p>
+                                <p>
+                                    <%= currentUser.email %>
+                                </p>
                             </div>
                             <div class="setting-menu">
                                 <ul>
                                     <a href="/order">
                                         <li class="active">
                                             <div class="left">
-                                                <img src="package.png" alt="">
+                                                <img src="/user/icons/package.png" alt="">
                                                 <p>My Orders</p>
                                             </div>
-                                            <div class="right"><img src="chevron.png" alt=""></div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
                                         </li>
                                     </a>
                                     <a href="/shortlist">
                                         <li>
                                             <div class="left">
-                                                <img src="wishlist.png" alt="">
+                                                <img src="/user/icons/wishlist.png" alt="">
                                                 <p>Shortlisted Vehicles</p>
                                             </div>
-                                            <div class="right"><img src="chevron.png" alt=""></div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
                                         </li>
                                     </a>
                                     <a href="/profile">
                                         <li>
                                             <div class="left">
-                                                <img src="settings.png" alt="">
+                                                <img src="/user/icons/settings.png" alt="">
                                                 <p>Profile Settings</p>
                                             </div>
-                                            <div class="right"><img src="chevron.png" alt=""></div>
+                                            <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
                                         </li>
                                     </a>
                                 </ul>
 
                             </div>
                             <div class="logout-box">
-                                <a href="#"><button>Logout</button></a>
+                                <a href="/logout"><button>Logout</button></a>
                             </div>
                         </div>
                     </div>

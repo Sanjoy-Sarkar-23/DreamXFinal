@@ -21,7 +21,7 @@
                                 <div class="container">
                                     <div class="mySlides">
                                         <div class="numbertext">1</div>
-                                        <img src="<%= listing.image %>" style="width:100%">
+                                        <img src="<%= listing.images[0].url %>" style="width:100%">
                                     </div>
                                     <!-- Additional Images -->
                                     <% for (let i=0; i < listing.moreImages.length; i++) { %>
@@ -30,7 +30,7 @@
                                                 <div class="numbertext">
                                                     <%= i + 2 %>
                                                 </div>
-                                                <img src="<%= currentImage %>" style="width:100%"
+                                                <img src="<%= currentImage.url %>" style="width:100%"
                                                     onclick="currentSlide('<%= i + 2 %>' )" alt="Image <%= i + 2 %>">
                                             </div>
                                             <% } %>
@@ -40,14 +40,14 @@
 
                                                 <div class="row">
                                                     <div class="column">
-                                                        <img class="demo cursor" src="<%= listing.image %>"
+                                                        <img class="demo cursor" src="<%= listing.images[0].url %>"
                                                             style="width:100%" onclick="currentSlide(1)"
                                                             alt="The Woods">
                                                     </div>
                                                     <% for (let i=0; i < listing.moreImages.length; i++) { %>
                                                         <% let currentImage=listing.moreImages[i]; %>
                                                             <div class="column">
-                                                                <img class="demo cursor" src="<%= currentImage %>"
+                                                                <img class="demo cursor" src="<%= currentImage.url %>"
                                                                     style="width:100%"
                                                                     onclick="currentSlide('<%= i + 2 %>')"
                                                                     alt="Image <%= i + 2 %>">
@@ -121,6 +121,10 @@
                                     </li>
                                 </ul>
                                 <p class="price">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                                </p>
+                                <p class="description">
+                                    <%= listing.description %>
+
                                 </p>
                                 <p>You buy it by calling or chatting</p>
                                 <div class="buy">

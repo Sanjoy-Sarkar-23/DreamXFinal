@@ -285,12 +285,12 @@
         <!-- Left Sidebar End -->
 
 
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <%- body -%>
-            <!-- end main content-->
+        <%- include('../includes/flash.ejs') %>
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <%- body -%>
+                <!-- end main content-->
 
     </div>
     <!-- END layout-wrapper -->
@@ -352,11 +352,11 @@
                         newInputContainer.className = "col-md-6 mb-3";
 
                         const newInput = document.createElement("input");
-                        newInput.type = "text";
-                        newInput.name = "moreImagesrs";
+                        newInput.type = "file";
+                        newInput.name = "moreImages";
                         newInput.className = "form-control mt-2";
                         newInput.setAttribute("multiple", "");
-                        newInput.placeholder = `Image Url ${wordList.shift()}`;
+                        newInput.placeholder = `Image ${wordList.shift()}`;
 
                         const removeButton = document.createElement("button");
                         removeButton.type = "button";
