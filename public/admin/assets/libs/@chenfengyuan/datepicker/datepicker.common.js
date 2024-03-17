@@ -817,7 +817,7 @@ var render = {
         text: day
       }));
     });
-    this.$week.ejs(items.join(''));
+    this.$week.html(items.join(''));
   },
   renderYears: function renderYears() {
     var options = this.options,
@@ -874,8 +874,8 @@ var render = {
 
     this.$yearsPrev.toggleClass(disabledClass, prevDisabled);
     this.$yearsNext.toggleClass(disabledClass, nextDisabled);
-    this.$yearsCurrent.toggleClass(disabledClass, true).ejs("".concat(viewYear + start + yearSuffix, " - ").concat(viewYear + end).concat(yearSuffix));
-    this.$years.ejs(items.join(''));
+    this.$yearsCurrent.toggleClass(disabledClass, true).html("".concat(viewYear + start + yearSuffix, " - ").concat(viewYear + end).concat(yearSuffix));
+    this.$years.html(items.join(''));
   },
   renderMonths: function renderMonths() {
     var options = this.options,
@@ -928,8 +928,8 @@ var render = {
 
     this.$yearPrev.toggleClass(disabledClass, prevDisabled);
     this.$yearNext.toggleClass(disabledClass, nextDisabled);
-    this.$yearCurrent.toggleClass(disabledClass, prevDisabled && nextDisabled).ejs(viewYear + options.yearSuffix || '');
-    this.$months.ejs(items.join(''));
+    this.$yearCurrent.toggleClass(disabledClass, prevDisabled && nextDisabled).html(viewYear + options.yearSuffix || '');
+    this.$months.html(items.join(''));
   },
   renderDays: function renderDays() {
     var $element = this.$element,
@@ -1092,8 +1092,8 @@ var render = {
 
     this.$monthPrev.toggleClass(disabledClass, prevDisabled);
     this.$monthNext.toggleClass(disabledClass, nextDisabled);
-    this.$monthCurrent.toggleClass(disabledClass, prevDisabled && nextDisabled).ejs(options.yearFirst ? "".concat(viewYear + yearSuffix, " ").concat(months[viewMonth]) : "".concat(months[viewMonth], " ").concat(viewYear).concat(yearSuffix));
-    this.$days.ejs(prevItems.join('') + items.join('') + nextItems.join(''));
+    this.$monthCurrent.toggleClass(disabledClass, prevDisabled && nextDisabled).html(options.yearFirst ? "".concat(viewYear + yearSuffix, " ").concat(months[viewMonth]) : "".concat(months[viewMonth], " ").concat(viewYear).concat(yearSuffix));
+    this.$days.html(prevItems.join('') + items.join('') + nextItems.join(''));
   }
 };
 

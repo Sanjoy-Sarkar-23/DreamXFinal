@@ -1,0 +1,125 @@
+<% layout('admin/layouts/boilerplate') -%>
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Seller</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Seller</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <br>
+                                <h4 class="card-title">All Selling Requests</h4>
+
+                                <br>
+
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>#UserID</th>
+                                            <th>Name</th>
+                                            <th>Vehicle Name</th>
+                                            <th>Model Name</th>
+                                            <th>Kilometre Driven</th>
+                                            <th>Buying Year</th>
+                                            <th>Selling price</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <tr>
+                                            <td>us001</td>
+                                            <td>Subham Debnath</td>
+                                            <td>Honda Activa 123</td>
+                                            <td>2020-21</td>
+                                            <td>11000</td>
+                                            <td>2021</td>
+                                            <td>60000</td>
+                                            <td><button type="button" class="btn btn-warning btn-sm">Available</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>us002</td>
+                                            <td>Bishal Acharjee</td>
+                                            <td>Honda Dio</td>
+                                            <td>2020-21</td>
+                                            <td>17000</td>
+                                            <td>2022</td>
+                                            <td>52000</td>
+                                            <td><button type="button" class="btn btn-warning btn-sm">Available</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>us003</td>
+                                            <td>Atanu Datta</td>
+                                            <td>TVS Ntorq 123</td>
+                                            <td>2021-22</td>
+                                            <td>9000</td>
+                                            <td>2022</td>
+                                            <td>75000</td>
+                                            <td><button type="button" class="btn btn-success btn-sm">Purchased</button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+
+
+
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Designe and Developed by
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->

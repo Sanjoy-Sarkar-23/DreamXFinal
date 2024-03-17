@@ -1,0 +1,163 @@
+<% layout('admin/layouts/boilerplate') -%>
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Banners</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Banners</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+
+
+
+                                <div class="table-responsive">
+                                    <table class="table table-editable table-nowrap align-middle table-edits">
+                                        <thead>
+                                            <tr>
+                                                <th>Slider Image</th>
+                                                <th>Slider Name</th>
+                                                <th>Order</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr data-id="1">
+                                                <td><img class="img-thumbnail" alt="200x200" width="200"
+                                                        src="/admin/assets/images/small/img-1.jpg"
+                                                        data-holder-rendered="true">
+                                                </td>
+                                                <td data-field="name">Slider 1</td>
+                                                <td data-field="name">1</td>
+                                                <td>
+                                                    <a type="button" class="btn btn-danger btn-sm"><i
+                                                            class="fas fa-trash"></i></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr data-id="2">
+                                                <td><img class="img-thumbnail" alt="200x200" width="200"
+                                                        src="/admin/assets/images/small/img-2.jpg"
+                                                        data-holder-rendered="true">
+                                                </td>
+                                                <td data-field="name">Slider 2</td>
+                                                <td data-field="name">2</td>
+                                                <td>
+                                                    <a type="button" class="btn btn-danger btn-sm"><i
+                                                            class="fas fa-trash"></i></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr data-id="3">
+
+                                                <td><img class="img-thumbnail" alt="200x200" width="200"
+                                                        src="/admin/assets/images/small/img-3.jpg"
+                                                        data-holder-rendered="true">
+                                                </td>
+                                                <td data-field="name">Slider 3</td>
+                                                <td data-field="name">3</td>
+                                                <td>
+                                                    <a type="button" class="btn btn-danger btn-sm"><i
+                                                            class="fas fa-trash"></i></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <br>
+                                <h5>Add New Banner</h5>
+                                <br>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+
+                                            <div class="mb-3">
+                                                <label for="validationCustom01" class="form-label">Order</label>
+                                                <input type="number" class="form-control" id="validationCustom02"
+                                                    placeholder="Enter slider number" value="" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="validationCustom01" class="form-label">Slider
+                                                    Name</label>
+                                                <input type="text" class="form-control" id="validationCustom02"
+                                                    placeholder="Enter name" value="" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="validationCustom02" class="form-label">Upload
+                                                    Slider</label>
+
+                                                <input type="file" class="form-control" id="customFile">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div>
+
+                                        <input class="btn btn-success" type="submit" value="Add slider">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- end row -->
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Designe and Developed by
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- end main content-->

@@ -1,5 +1,6 @@
 <% layout('admin/layouts/boilerplate') -%>
 
+
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
@@ -98,7 +99,8 @@
                                                         <option value="Bajaj" <%=listing.brand==='Bajaj' ? 'selected'
                                                             : '' %>>Bajaj</option>
                                                         <option value="Royal Enfield" <%=listing.brand==='Royal Enfield'
-                                                            ? 'selected' : '' %>>Royel Enfield</option>
+                                                            ? 'selected' : '' %>
+                                                            >Royel Enfield</option>
                                                         <option value="Sujuki" <%=listing.brand==='Sujuki' ? 'selected'
                                                             : '' %>>Sujuki</option>
                                                     </select>
@@ -117,9 +119,14 @@
                                                         required>
                                                         <option value="<%= listing.bodyType %>">Choose</option>
                                                         <option value="Motorcycles" <%=listing.bodyType==='Motorcycles'
-                                                            ? 'selected' : '' %>>Motorcycles</option>
+                                                            ? 'selected' : '' %>
+                                                            >Motorcycles</option>
                                                         <option value="Hatchback" <%=listing.bodyType==='Hatchback'
                                                             ? 'selected' : '' %>>Hatchback</option>
+                                                        <option value="Scooters" <%=listing.bodyType==='Scooters'
+                                                            ? 'selected' : '' %>>Scooters</option>
+
+
                                                         <option value="Sedan" <%=listing.bodyType==='Sedan' ? 'selected'
                                                             : '' %>>Sedan</option>
                                                         <option value="SUV" <%=listing.bodyType==='SUV' ? 'selected'
@@ -143,9 +150,11 @@
                                                         type</label>
                                                     <select class="form-select" name="fuelType" id="validationCustom03"
                                                         required>
-                                                        <option value="">Choose</option>
-                                                        <option value="patrol" selected>
+                                                        <option value="<%= listing.fuelType %>">
                                                             <%= listing.fuelType %>
+                                                        </option>
+                                                        <option value="patrol">
+                                                            Patrol
                                                         </option>
                                                         <option value="diesel">Diesel</option>
                                                         <option value="cng">CNG</option>
@@ -256,21 +265,3 @@
         </div>
     </div>
     <!-- End Page-content -->
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Designe and Developed by
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    </div>
-    <!-- end main content-->

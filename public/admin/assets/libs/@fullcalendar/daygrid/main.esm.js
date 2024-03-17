@@ -687,7 +687,7 @@ var DayBgRow = /** @class */ (function () {
         }
         for (var _i = 0, _a = props.cells; _i < _a.length; _i++) {
             var cell = _a[_i];
-            parts.push(renderCellHtml(cell.date, props.dateProfile, this.context, cell.ejsAttrs));
+            parts.push(renderCellHtml(cell.date, props.dateProfile, this.context, cell.htmlAttrs));
         }
         if (!props.cells.length) {
             parts.push('<td class="fc-day ' + this.context.theme.getClass('widgetContent') + '"></td>');

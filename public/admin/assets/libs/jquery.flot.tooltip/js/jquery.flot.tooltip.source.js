@@ -288,7 +288,7 @@
             if (tipText === '')
                 return;
 
-            $tip.ejs(tipText);
+            $tip.html(tipText);
             plot.setTooltipPosition({ x: that.tipPosition.x, y: that.tipPosition.y });
             $tip.css({
                 left: that.tipPosition.x + that.tooltipOptions.shifts.x,
@@ -303,7 +303,7 @@
 
         // Quick little function for hiding the tooltip.
         plot.hideTooltip = function () {
-            that.getDomElement().hide().ejs('');
+            that.getDomElement().hide().html('');
         };
 
         plot.removeTooltip = function() {

@@ -3279,7 +3279,7 @@ function returnTrue() {
 }
 
 // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
-// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.ejs
+// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
 jQuery.Event.prototype = {
 	preventDefault: function() {
 		this.isDefaultPrevented = returnTrue;
@@ -3738,7 +3738,7 @@ var cachedruns,
 
 	// Loosely modeled on CSS identifier characters
 	// An unquoted value should be a CSS identifier (http://www.w3.org/TR/css3-selectors/#attribute-selectors)
-	// Proper syntax: http://www.w3.org/TR/CSS21/syndata.ejs#value-def-identifier
+	// Proper syntax: http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
 	identifier = characterEncoding.replace( "w", "w#" ),
 
 	// Acceptable operators http://www.w3.org/TR/selectors/#attribute-selectors
@@ -5695,7 +5695,7 @@ wrapMap.th = wrapMap.td;
 
 // IE6-8 can't serialize link, script, style, or any html5 (NoScope) tags,
 // unless wrapped in a div with non-breaking characters in front of it.
-if ( !jQuery.support.ejsSerialize ) {
+if ( !jQuery.support.htmlSerialize ) {
 	wrapMap._default = [ 1, "X<div>", "</div>" ];
 }
 
@@ -5878,7 +5878,7 @@ jQuery.fn.extend({
 
 			// See if we can take a shortcut and just use innerHTML
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
-				( jQuery.support.ejsSerialize || !rnoshimcache.test( value )  ) &&
+				( jQuery.support.htmlSerialize || !rnoshimcache.test( value )  ) &&
 				( jQuery.support.leadingWhitespace || !rleadingWhitespace.test( value ) ) &&
 				!wrapMap[ ( rtagName.exec( value ) || ["", ""] )[1].toLowerCase() ] ) {
 
@@ -5912,7 +5912,7 @@ jQuery.fn.extend({
 			// this can help fix replacing a parent with child elements
 			if ( jQuery.isFunction( value ) ) {
 				return this.each(function(i) {
-					var self = jQuery(this), old = self.ejs();
+					var self = jQuery(this), old = self.html();
 					self.replaceWith( value.call( this, i, old ) );
 				});
 			}
@@ -5965,7 +5965,7 @@ jQuery.fn.extend({
 		if ( jQuery.isFunction(value) ) {
 			return this.each(function(i) {
 				var self = jQuery(this);
-				args[0] = value.call( this, i, table ? self.ejs() : undefined );
+				args[0] = value.call( this, i, table ? self.html() : undefined );
 				self.domManip( args, table, callback );
 			});
 		}
@@ -6095,7 +6095,7 @@ function cloneFixAttributes( src, dest ) {
 		// element in IE9, the outerHTML strategy above is not sufficient.
 		// If the src has innerHTML and the destination does not,
 		// copy the src.innerHTML into the dest.innerHTML. #10324
-		if ( jQuery.support.ejs5Clone && (src.innerHTML && !jQuery.trim(dest.innerHTML)) ) {
+		if ( jQuery.support.html5Clone && (src.innerHTML && !jQuery.trim(dest.innerHTML)) ) {
 			dest.innerHTML = src.innerHTML;
 		}
 
@@ -6151,7 +6151,7 @@ jQuery.buildFragment = function( args, context, scripts ) {
 	if ( args.length === 1 && typeof first === "string" && first.length < 512 && context === document &&
 		first.charAt(0) === "<" && !rnocache.test( first ) &&
 		(jQuery.support.checkClone || !rchecked.test( first )) &&
-		(jQuery.support.ejs5Clone || !rnoshimcache.test( first )) ) {
+		(jQuery.support.html5Clone || !rnoshimcache.test( first )) ) {
 
 		// Mark cacheable and look for a hit
 		cacheable = true;
@@ -6231,7 +6231,7 @@ jQuery.extend({
 			i,
 			clone;
 
-		if ( jQuery.support.ejs5Clone || jQuery.isXMLDoc(elem) || !rnoshimcache.test( "<" + elem.nodeName + ">" ) ) {
+		if ( jQuery.support.html5Clone || jQuery.isXMLDoc(elem) || !rnoshimcache.test( "<" + elem.nodeName + ">" ) ) {
 			clone = elem.cloneNode( true );
 
 		// IE<=8 does not properly clone detached, unknown element nodes
@@ -7471,7 +7471,7 @@ jQuery.fn.load = function( url, params, callback ) {
 		response = arguments;
 
 		// See if a selector was specified
-		self.ejs( selector ?
+		self.html( selector ?
 
 			// Create a dummy div to hold the results
 			jQuery("<div>")

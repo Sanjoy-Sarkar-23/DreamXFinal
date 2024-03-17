@@ -656,7 +656,7 @@ var i,
 	// http://www.w3.org/TR/css3-selectors/#whitespace
 	whitespace = "[\\x20\\t\\r\\n\\f]",
 
-	// http://www.w3.org/TR/CSS21/syndata.ejs#value-def-identifier
+	// http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
 	identifier = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",
 
 	// Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
@@ -716,7 +716,7 @@ var i,
 	rsibling = /[+~]/,
 	rescape = /'|\\/g,
 
-	// CSS escapes http://www.w3.org/TR/CSS21/syndata.ejs#escaped-characters
+	// CSS escapes http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
 	runescape = new RegExp( "\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)", "ig" ),
 	funescape = function( _, escaped, escapedWhitespace ) {
 		var high = "0x" + escaped - 0x10000;
@@ -4473,11 +4473,11 @@ function createSafeFragment( document ) {
 
 	// Make sure that link elements get serialized correctly by innerHTML
 	// This requires a wrapper element in IE
-	support.ejsSerialize = !!div.getElementsByTagName( "link" ).length;
+	support.htmlSerialize = !!div.getElementsByTagName( "link" ).length;
 
 	// Makes sure cloning an html5 element does not cause problems
 	// Where outerHTML is undefined, this still works
-	support.ejs5Clone =
+	support.html5Clone =
 		document.createElement( "nav" ).cloneNode( true ).outerHTML !== "<:nav></:nav>";
 
 	// Check if a disconnected checkbox will retain its checked
@@ -4535,7 +4535,7 @@ var wrapMap = {
 
 	// IE6-8 can't serialize link, script, style, or any html5 (NoScope) tags,
 	// unless wrapped in a div with non-breaking characters in front of it.
-	_default: support.ejsSerialize ? [ 0, "", "" ] : [ 1, "X<div>", "</div>" ]
+	_default: support.htmlSerialize ? [ 0, "", "" ] : [ 1, "X<div>", "</div>" ]
 };
 
 // Support: IE8-IE9
@@ -4628,7 +4628,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				tag = ( rtagName.exec( elem ) || [ "", "" ] )[ 1 ].toLowerCase();
 				wrap = wrapMap[ tag ] || wrapMap._default;
 
-				tmp.innerHTML = wrap[ 1 ] + jQuery.ejsPrefilter( elem ) + wrap[ 2 ];
+				tmp.innerHTML = wrap[ 1 ] + jQuery.htmlPrefilter( elem ) + wrap[ 2 ];
 
 				// Descend through wrappers to the right content
 				j = wrap[ 0 ];
@@ -5553,7 +5553,7 @@ jQuery.Event = function( src, props ) {
 };
 
 // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
-// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.ejs
+// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
 jQuery.Event.prototype = {
 	constructor: jQuery.Event,
 	isDefaultPrevented: returnFalse,
@@ -5976,7 +5976,7 @@ function fixCloneNodeIssues( src, dest ) {
 		// element in IE9, the outerHTML strategy above is not sufficient.
 		// If the src has innerHTML and the destination does not,
 		// copy the src.innerHTML into the dest.innerHTML. #10324
-		if ( support.ejs5Clone && ( src.innerHTML && !jQuery.trim( dest.innerHTML ) ) ) {
+		if ( support.html5Clone && ( src.innerHTML && !jQuery.trim( dest.innerHTML ) ) ) {
 			dest.innerHTML = src.innerHTML;
 		}
 
@@ -6026,7 +6026,7 @@ function domManip( collection, args, callback, ignored ) {
 		return collection.each( function( index ) {
 			var self = collection.eq( index );
 			if ( isFunction ) {
-				args[ 0 ] = value.call( this, index, self.ejs() );
+				args[ 0 ] = value.call( this, index, self.html() );
 			}
 			domManip( self, args, callback, ignored );
 		} );
@@ -6134,7 +6134,7 @@ jQuery.extend( {
 		var destElements, node, clone, i, srcElements,
 			inPage = jQuery.contains( elem.ownerDocument, elem );
 
-		if ( support.ejs5Clone || jQuery.isXMLDoc( elem ) ||
+		if ( support.html5Clone || jQuery.isXMLDoc( elem ) ||
 			!rnoshimcache.test( "<" + elem.nodeName + ">" ) ) {
 
 			clone = elem.cloneNode( true );
@@ -6348,11 +6348,11 @@ jQuery.fn.extend( {
 
 			// See if we can take a shortcut and just use innerHTML
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
-				( support.ejsSerialize || !rnoshimcache.test( value )  ) &&
+				( support.htmlSerialize || !rnoshimcache.test( value )  ) &&
 				( support.leadingWhitespace || !rleadingWhitespace.test( value ) ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
-				value = jQuery.ejsPrefilter( value );
+				value = jQuery.htmlPrefilter( value );
 
 				try {
 					for ( ; i < l; i++ ) {
@@ -10159,7 +10159,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject !== undefined ?
 		// Support: IE<9
 		// oldIE XHR does not support non-RFC2616 methods (#13240)
 		// See http://msdn.microsoft.com/en-us/library/ie/ms536648(v=vs.85).aspx
-		// and http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.ejs#sec9
+		// and http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9
 		// Although this check for six methods instead of eight
 		// since IE also does not support "trace" and "connect"
 		return /^(get|post|head|put|delete|options)$/i.test( this.type ) &&
@@ -10624,7 +10624,7 @@ jQuery.fn.load = function( url, params, callback ) {
 			// Save response for use in complete callback
 			response = arguments;
 
-			self.ejs( selector ?
+			self.html( selector ?
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors

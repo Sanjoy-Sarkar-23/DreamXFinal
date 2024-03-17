@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Listing = require('../models/listing.js');
 const User = require('../models/user.js');
+const SellerApply = require('../models/sellerFrom.js');
 const multer = require('multer');
 const { cloudinary, storage } = require('../cloudconfig.js');
 // const storages = multer.memoryStorage()
@@ -12,14 +13,17 @@ const upload = multer({ storage })
 const adminController = {
     admin: async (req, res) => {
         try {
-
+            const allListingsCount = await Listing.countDocuments({});
+            const allSellReqCount = await SellerApply.countDocuments({});
+            const allUserCount = await User.countDocuments({});
             const pageTitle = "Dashboard | Dream X car and bike sale";
-            res.render('admin/admin', { pageTitle });
+            res.render('admin/admin', { pageTitle, allListingsCount, allUserCount, allSellReqCount });
         } catch (error) {
             console.error('Error fetching listings:', error);
             res.status(500).send('Internal Server Error');
         }
     },
+
     add_order: async (req, res) => {
 
         const pageTitle = "Dashboard | Add Order";
@@ -158,7 +162,7 @@ const adminController = {
     vehicle: async (req, res) => {
         // Fetch data from the admin model
         // const admins = adminModel.getAllAdmins();
-        const allListings = await Listing.find({});
+        const allListings = await Listing.find({}).sort({ created: 'desc' });
         const pageTitle = "Dashboard | Vehicle View";
         // Render the admin view with the data
         res.render('admin/vehicle', { pageTitle, allListings });

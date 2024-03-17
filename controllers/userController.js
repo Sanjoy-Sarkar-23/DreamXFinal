@@ -2,7 +2,7 @@
 const mongoose = require('mongoose'); // Add this line
 const Listing = require('../models/listing.js');
 const User = require('../models/user.js');
-const Seller = require('../models/selleFrom.js');
+const Seller = require('../models/sellerFrom.js');
 
 
 const userController = {
@@ -15,7 +15,7 @@ const userController = {
             const SUV = await Listing.find({ bodyType: 'SUV', isStatus: true }).sort({ createdAt: -1 }).limit(4);
             const Minivan = await Listing.find({ bodyType: 'Minivan', isStatus: true }).sort({ createdAt: -1 }).limit(4);
             const MUV = await Listing.find({ bodyType: 'MUV', isStatus: true }).sort({ createdAt: -1 }).limit(4);
-            const recentlyAddedListings = await Listing.find().sort({ createdAt: -1 });
+            const recentlyAddedListings = await Listing.find().sort({ createdAt: -1 }).limit(5);
             // Render the user view with the data
             res.render('user/index', { recentlyAddedListings, motorcycles, scooters, Hatchback, Sedan, SUV, Minivan, MUV });
         } catch (error) {
@@ -62,14 +62,22 @@ const userController = {
         try {
             let filteredListings;
             const { filter } = req.params;
+            const { sort } = req.query; // Retrieve sort query parameter
+
+            // Define sort criteria based on the sort query parameter
+            let sortCriteria = { price: 1 }; // Default: sort by price in ascending order
+
+            if (sort === 'priceHighToLow') {
+                sortCriteria = { price: -1 }; // Sort by price in descending order
+            }
 
             // Check if a filter parameter is provided in the route
             if (filter) {
-                // If filter parameter is provided, filter the listings by bodyType or category
-                filteredListings = await Listing.find({ $or: [{ bodyType: filter }, { brand: filter }, { category: filter }] });
+                // If filter parameter is provided, filter the listings by bodyType, brand, or category
+                filteredListings = await Listing.find({ $or: [{ bodyType: filter }, { brand: filter }, { category: filter }] }).sort(sortCriteria);
             } else {
-                // If no filter parameter, fetch all listings
-                filteredListings = await Listing.find({});
+                // If no filter parameter, fetch all listings and sort
+                filteredListings = await Listing.find({}).sort(sortCriteria);
             }
 
             res.render('user/shop', { allListings: filteredListings, filter });
@@ -236,9 +244,9 @@ const userController = {
     },
 
     wishList: async (req, res, next) => {
-        console.log('req.body:', req.body);
+        // console.log('req.body:', req.body);
         const { _id } = req.body;
-        console.log('_id:', _id);
+        // console.log('_id:', _id);
         // Assuming you're using Passport.js and have a user object attached to req.user
         const userId = req.user._id;
         try {
@@ -248,12 +256,12 @@ const userController = {
                 { $addToSet: { wishListUser: userId } },
                 { new: true }
             );
-            console.log(updatedListing);
+            // console.log(updatedListing);
             if (!updatedListing) {
-
+                // res.flash('error', 'Listing not found');
                 return { success: false, message: 'Listing not found' };
             }
-
+            // res.flash('success', 'Wishlist updated successfully');
             return res.json({ success: true, message: 'Wishlist updated successfully' });
         } catch (error) {
             console.error('Error updating wishlist:', error);
@@ -262,9 +270,9 @@ const userController = {
 
     },
     wishlistRemove: async (req, res, next) => {
-        console.log('req.body:', req.body);
+        // console.log('req.body:', req.body);
         const { _id } = req.body;
-        console.log('_id:', _id);
+        // console.log('_id:', _id);
         const userId = req.user._id;
 
         try {
@@ -275,12 +283,13 @@ const userController = {
                 { new: true }
             );
 
-            console.log(updatedListing);
+            // console.log(updatedListing);
 
             if (!updatedListing) {
+                // res.flash('error', 'Listing not found');
                 return res.json({ success: false, message: 'Listing not found' });
             }
-
+            // res.flash('success', 'Listing removed from wishlist successfully');
             return res.json({ success: true, message: 'Listing removed from wishlist successfully' });
         } catch (error) {
             console.error('Error removing from wishlist:', error);

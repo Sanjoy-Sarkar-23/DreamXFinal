@@ -22,7 +22,7 @@ const LocalStrategy = require('passport-local').Strategy;
 // Initialize Express application
 const app = express();
 const dbUrl = process.env.ATLASDB_URL;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // Set up view engine and middleware
 app.set('view engine', 'ejs');

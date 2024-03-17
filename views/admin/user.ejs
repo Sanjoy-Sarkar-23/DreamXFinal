@@ -1,6 +1,4 @@
 <% layout('admin/layouts/boilerplate') -%>
-
-
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
@@ -58,7 +56,7 @@
                                         <% for(let user of allUser) { %>
                                             <tr>
                                                 <td>
-                                                    <%= user._id %>
+                                                    <%= String(user._id).slice(-5) %>
                                                 </td>
                                                 <td>
                                                     <%= user.displayName %>
@@ -86,28 +84,7 @@
                                                 </td>
                                             </tr>
                                             <% } %>
-                                                <tr>
-                                                    <td>us002</td>
-                                                    <td>Bishal Acharjee</td>
-                                                    <td>8831257865</td>
-                                                    <td>bishal03@gmail.com</td>
-                                                    <td>Dhajanagar Udaipur, Tripura</td>
-                                                    <td>Tripura</td>
-                                                    <td>Udaipur</td>
-                                                    <td>Gomati</td>
-                                                    <td>799114</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>us003</td>
-                                                    <td>Atanu Datta</td>
-                                                    <td>7004568932</td>
-                                                    <td>atanudatta009@gmail.com</td>
-                                                    <td>Ramnagar Agartala, Tripura</td>
-                                                    <td>Tripura</td>
-                                                    <td>Agartala</td>
-                                                    <td>West</td>
-                                                    <td>799005</td>
-                                                </tr>
+
                                     </tbody>
                                 </table>
 

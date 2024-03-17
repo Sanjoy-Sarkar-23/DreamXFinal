@@ -42,6 +42,10 @@ const SellerApplySchema = new mongoose.Schema({
         type: [String], // Assuming you store file paths or URLs as strings
         required: true,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 // Create the mongoose model

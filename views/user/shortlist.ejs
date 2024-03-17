@@ -9,7 +9,7 @@
             <div class="breadcrumb">
                 <a href="index.ejs">Home</a>
                 <img src="/user/icons/slash.png" alt="">
-                <a class="active" href="shortlist.ejs">Shortlist</a>
+                <a class="active" href="/shortlist">Shortlist</a>
             </div>
             <div class="basic-page">
                 <h2 class="page-title">Shortlist</h2>
@@ -41,7 +41,7 @@
                                             <div class="right"><img src="/user/icons/chevron.png" alt=""></div>
                                         </li>
                                     </a>
-                                    <a href="shortlist.ejs">
+                                    <a href="/shortlist">
                                         <li class="active">
                                             <div class="left">
                                                 <img src="/user/icons/wishlist.png" alt="">
@@ -75,7 +75,7 @@
                                             src="/user/icons/close-button.png" alt=""></button>
 
                                     <div class="left">
-                                        <img src="<%= listing.image %>" alt="">
+                                        <img src="<%= listing.images[0].url %>" alt="">
                                     </div>
                                     <div class="right">
                                         <h2>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuid4 } = require('uuid');
 
 // Define the user schema
 const userSchema = new mongoose.Schema({
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true,
-        default: uuidv4, // Set default value to a new UUID
+        default: uuid4, // Set default value to a new UUID
         required: true
     },
     displayName: {

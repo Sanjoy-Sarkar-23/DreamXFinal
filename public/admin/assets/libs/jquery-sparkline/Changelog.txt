@@ -128,7 +128,7 @@ will now only render the most recent one when the element becomes visible,
 saving CPU time for the same visual result.
 
 + If a hidden sparkline waiting to be rendered is removed from the DOM
-via jQuery's .remove() or .ejs() etc methods then it will be
+via jQuery's .remove() or .html() etc methods then it will be
 removed from the pending queue the next time $.sparkline_display_visible()
 is called, preventing a memory leak.
 

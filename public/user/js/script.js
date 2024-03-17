@@ -265,3 +265,97 @@ async function removeFromWishlist(listingId) {
     console.error('Error removing from wishlist:', error);
   }
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const priceLowToHighRadio = document.getElementById('low-to-high');
+  const priceHighToLowRadio = document.getElementById('high-to-low');
+  const shopProductGrid = document.querySelector('.shop-product-grid');
+  const allListings = JSON.parse('<%- JSON.stringify(allListings) %>');
+
+  // Function to render listings based on selected filter and sort
+  function renderListings() {
+    let filteredListings = [...allListings];
+
+    // Filter based on price
+    if (priceLowToHighRadio.checked) {
+      filteredListings.sort((a, b) => a.price - b.price);
+    } else if (priceHighToLowRadio.checked) {
+      filteredListings.sort((a, b) => b.price - a.price);
+    }
+
+    // Clear previous listings
+    shopProductGrid.innerHTML = '';
+
+    // Render filtered listings
+    filteredListings.forEach(listing => {
+      const productBox = document.createElement('div');
+      productBox.classList.add('product-box');
+
+      const productImg = document.createElement('div');
+      productImg.classList.add('product-img');
+      const img = document.createElement('img');
+      img.src = listing.images[0].url;
+      img.alt = '';
+      productImg.appendChild(img);
+
+      const productDt = document.createElement('div');
+      productDt.classList.add('product-dt');
+
+      const productNameWishlist = document.createElement('div');
+      productNameWishlist.classList.add('product-name-wishlist');
+
+      const productName = document.createElement('div');
+      productName.classList.add('product-name');
+      const h3 = document.createElement('h3');
+      h3.textContent = listing.brand;
+      const p = document.createElement('p');
+      p.textContent = listing.model;
+      productName.appendChild(h3);
+      productName.appendChild(p);
+
+      const wishlist = document.createElement('div');
+      wishlist.classList.add('wishlist');
+      const wishlistImg = document.createElement('img');
+      wishlistImg.src = '/user/icons/wishlist.png';
+      wishlistImg.alt = '';
+      wishlist.appendChild(wishlistImg);
+
+      productNameWishlist.appendChild(productName);
+      productNameWishlist.appendChild(wishlist);
+
+      const price = document.createElement('p');
+      price.classList.add('price');
+      price.innerHTML = `&#8377; ${listing.price.toLocaleString('en-IN')}`;
+
+      const ul = document.createElement('ul');
+      const li1 = document.createElement('li');
+      li1.textContent = `${listing.price.toLocaleString('en-IN')} KM`;
+      const li2 = document.createElement('li');
+      li2.classList.add('center');
+      li2.textContent = listing.buying;
+      const li3 = document.createElement('li');
+      li3.textContent = listing.fuelType;
+
+      ul.appendChild(li1);
+      ul.appendChild(li2);
+      ul.appendChild(li3);
+
+      productDt.appendChild(productNameWishlist);
+      productDt.appendChild(price);
+      productDt.appendChild(ul);
+
+      productBox.appendChild(productImg);
+      productBox.appendChild(productDt);
+
+      shopProductGrid.appendChild(productBox);
+    });
+  }
+
+  // Event listener for radio button change
+  priceLowToHighRadio.addEventListener('change', renderListings);
+  priceHighToLowRadio.addEventListener('change', renderListings);
+
+  // Initial render
+  renderListings();
+});

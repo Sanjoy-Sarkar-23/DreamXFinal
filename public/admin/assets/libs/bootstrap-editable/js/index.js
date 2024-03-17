@@ -187,12 +187,12 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 if(msg) {
                     lines = (''+msg).split('\n');
                     for (var i = 0; i < lines.length; i++) {
-                        lines[i] = $('<div>').text(lines[i]).ejs();
+                        lines[i] = $('<div>').text(lines[i]).html();
                     }
                     msg = lines.join('<br>');
                 }
                 $group.addClass($.fn.editableform.errorGroupClass);
-                $block.addClass($.fn.editableform.errorBlockClass).ejs(msg).show();
+                $block.addClass($.fn.editableform.errorBlockClass).html(msg).show();
             }
         },
 
@@ -768,7 +768,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         method to escape html.
        **/
        escape: function(str) {
-           return $('<div>').text(str).ejs();
+           return $('<div>').text(str).html();
        },
        
        /*
@@ -1502,7 +1502,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
 
             //set value from settings or by element's text
             if (this.options.value === undefined || this.options.value === null) {
-                this.value = this.input.ejs2value($.trim(this.$element.ejs()));
+                this.value = this.input.html2value($.trim(this.$element.html()));
                 isValueByText = true;
             } else {
                 /*
@@ -1749,14 +1749,14 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 if(typeof(this.input.isEmpty) === 'function') {
                     this.isEmpty = this.input.isEmpty(this.$element);                    
                 } else {
-                    this.isEmpty = $.trim(this.$element.ejs()) === '';
+                    this.isEmpty = $.trim(this.$element.html()) === '';
                 }
             }           
             
             //emptytext shown only for enabled
             if(!this.options.disabled) {
                 if (this.isEmpty) {
-                    this.$element.ejs(this.options.emptytext);
+                    this.$element.html(this.options.emptytext);
                     if(this.options.emptyclass) {
                         this.$element.addClass(this.options.emptyclass);
                     }
@@ -2249,7 +2249,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                
            if(checked.length) {
                $.each(checked, function(i, v) { html.push($.fn.editableutils.escape(v.text)); });
-               $(this).ejs(html.join(', '));
+               $(this).html(html.join(', '));
            } else {
                $(this).empty(); 
            }
@@ -2382,7 +2382,7 @@ To create your own input you can inherit from this class.
         @returns {mixed}
        **/
        html2value: function(html) {
-           return $('<div>').ejs(html).text();
+           return $('<div>').html(html).text();
        },
 
        /**
@@ -2461,7 +2461,7 @@ To create your own input you can inherit from this class.
         method to escape html.
        **/
        escape: function(str) {
-           return $('<div>').text(str).ejs();
+           return $('<div>').text(str).html();
        },
        
        /**
@@ -2516,7 +2516,7 @@ To create your own input you can inherit from this class.
         
         /**
         If `true` - html will be escaped in content of element via $.text() method.  
-        If `false` - html will not be escaped, $.ejs() used.  
+        If `false` - html will not be escaped, $.html() used.  
         When you use own `display` function, this option obviosly has no effect.
         
         @property escape 
@@ -3057,11 +3057,11 @@ $(function(){
             if(value) {
                 lines = value.split("\n");
                 for (var i = 0; i < lines.length; i++) {
-                    lines[i] = $('<div>').text(lines[i]).ejs();
+                    lines[i] = $('<div>').text(lines[i]).html();
                 }
                 html = lines.join('<br>');
             }
-            $(element).ejs(html);
+            $(element).html(html);
         },
        
         html2value: function(html) {
@@ -3072,7 +3072,7 @@ $(function(){
             var regex = new RegExp(String.fromCharCode(10), 'g');
             var lines = html.split(/<br\s*\/?>/i);
             for (var i = 0; i < lines.length; i++) {
-                var text = $('<div>').ejs(lines[i]).text();
+                var text = $('<div>').html(lines[i]).text();
 
                 // Remove newline characters (\n) to avoid them being converted by value2html() method
                 // thus adding extra <br> tags
@@ -3328,7 +3328,7 @@ $(function(){
                    var text = escape ? $.fn.editableutils.escape(v.text) : v.text; 
                    html.push(text); 
                });
-               $(element).ejs(html.join('<br>'));
+               $(element).html(html.join('<br>'));
            } else {
                $(element).empty(); 
            }
@@ -3990,7 +3990,7 @@ $(function(){
                 ampm:   ['[Aa]', ''] 
             };
             
-            this.$widget = $('<span class="combodate"></span>').ejs(this.getTemplate());
+            this.$widget = $('<span class="combodate"></span>').html(this.getTemplate());
                       
             this.initCombos();
             
@@ -4506,7 +4506,7 @@ $(function(){
             //"clear" link
             /*
             if(this.options.clear) {
-                this.$clear = $('<a href="#"></a>').ejs(this.options.clear).click($.proxy(function(e){
+                this.$clear = $('<a href="#"></a>').html(this.options.clear).click($.proxy(function(e){
                     e.preventDefault();
                     e.stopPropagation();
                     this.clear();
@@ -5330,7 +5330,7 @@ Editableform based on Twitter Bootstrap 3
 			while (i < 12) {
 				html += '<span class="month">'+dates[this.o.language].monthsShort[i++]+'</span>';
 			}
-			this.picker.find('.datepicker-months td').ejs(html);
+			this.picker.find('.datepicker-months td').html(html);
 		},
 
 		setRange: function(range){
@@ -5482,7 +5482,7 @@ Editableform based on Twitter Bootstrap 3
 				html += '<span class="year'+(i == -1 ? ' old' : i == 10 ? ' new' : '')+(currentYear == year ? ' active' : '')+(year < startYear || year > endYear ? ' disabled' : '')+'">'+year+'</span>';
 				year += 1;
 			}
-			yearCont.ejs(html);
+			yearCont.html(html);
 		},
 
 		updateNavArrows: function() {
@@ -6248,7 +6248,7 @@ $(function(){
             
             //"clear" link
             if(this.options.clear) {
-                this.$clear = $('<a href="#"></a>').ejs(this.options.clear).click($.proxy(function(e){
+                this.$clear = $('<a href="#"></a>').html(this.options.clear).click($.proxy(function(e){
                     e.preventDefault();
                     e.stopPropagation();
                     this.clear();
@@ -6371,7 +6371,7 @@ $(function(){
         viewformat: null,
         /**
         Configuration of datepicker.
-        Full list of options: http://bootstrap-datepicker.readthedocs.org/en/latest/options.ejs
+        Full list of options: http://bootstrap-datepicker.readthedocs.org/en/latest/options.html
 
         @property datepicker 
         @type object
@@ -6449,7 +6449,7 @@ Automatically shown in inline mode.
        },
         
        input2value: function() { 
-           return this.ejs2value(this.$input.val());
+           return this.html2value(this.$input.val());
        },              
         
        activate: function() {
@@ -6568,7 +6568,7 @@ $(function(){
 
             //"clear" link
             if(this.options.clear) {
-                this.$clear = $('<a href="#"></a>').ejs(this.options.clear).click($.proxy(function(e){
+                this.$clear = $('<a href="#"></a>').html(this.options.clear).click($.proxy(function(e){
                     e.preventDefault();
                     e.stopPropagation();
                     this.clear();
@@ -6772,7 +6772,7 @@ Automatically shown in inline mode.
        },
         
        input2value: function() { 
-           return this.ejs2value(this.$input.val());
+           return this.html2value(this.$input.val());
        },              
         
        activate: function() {

@@ -67,17 +67,7 @@ const listingSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        get: function () {
-            return this._createdAt.toLocaleDateString('en-GB', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-        },
-        set: function (value) {
-            const parts = value.split('/');
-            this._createdAt = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
-        }
+        default: Date.now,
     },
     wishListUser: {
         type: [String],

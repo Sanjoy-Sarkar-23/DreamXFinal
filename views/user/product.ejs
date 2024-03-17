@@ -290,13 +290,14 @@
                             console.log('Data received from server:', data);
 
                             if (data && data.success) {
+
                                 // Update the UI based on the wishlist status
                                 wishlistStatusElement.textContent = 'Wishlisted';
                                 wishlistIcon.className = 'fa-solid fa-heart'; // Change to filled heart icon
                                 wishlistIcon.style.color = 'red';
                                 wishlistButton.style.color = 'red';
                                 wishlistButton.id = "wishlistButton";
-
+                                // res.flash('success', 'Wishlist updated successfully');
                             } else {
                                 console.error(data ? data.message : 'Unknown error occurred');
                             }

@@ -1,0 +1,161 @@
+<% layout('admin/layouts/boilerplate') -%>
+
+
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0">Orders</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">Add Orders</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <br>
+                                <h2 class="card-title">Add new order</h4>
+                                    <br>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom01" class="form-label">Vehicle
+                                                        Id</label>
+                                                    <input type="text" class="form-control" id="validationCustom01"
+                                                        placeholder="Enter vehicle ID" value="" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom02" class="form-label">Vehicle
+                                                        name</label>
+                                                    <input type="text" class="form-control" id="validationCustom02"
+                                                        placeholder="Enter vehicle name" value="" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom01" class="form-label">User
+                                                        Id</label>
+                                                    <input type="text" class="form-control" id="validationCustom01"
+                                                        placeholder="Enter user ID" value="" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom02" class="form-label">User
+                                                        name</label>
+                                                    <input type="text" class="form-control" id="validationCustom02"
+                                                        placeholder="Enter user name" value="" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom02" class="form-label">Price</label>
+                                                    <input type="number" class="form-control" id="validationCustom02"
+                                                        placeholder="Enter price" value="" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom02" class="form-label">Date</label>
+                                                    <input type="date" class="form-control" id="validationCustom02"
+                                                        value="" required>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="validationCustom03" class="form-label">Order
+                                                        Status</label>
+                                                    <select class="form-select" id="validationCustom03" required>
+                                                        <option value="">Choose</option>
+                                                        <option value="panding">Panding</option>
+                                                        <option value="delivered">Delivered</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please select a valid satus.
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                        <br>
+
+                                        <div>
+
+                                            <input class="btn btn-primary" type="submit" value="Submit">
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Dream X Car & Bike sale.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Designe and Developed by
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- end main content-->

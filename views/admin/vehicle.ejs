@@ -60,92 +60,109 @@
                                         </tr>
                                     </thead>
 
-
                                     <tbody>
                                         <% for(let listing of allListings) { %>
                                             <tr data-listing-id="<%= listing._id %>">
                                                 <td>
-                                                    <%= listing._id %>
+                                                    <%= String(listing._id).slice(-5) %>
                                                 </td>
                                                 <td>
-                                                    <%= listing.name %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.model %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.bodyType %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.price.toLocaleString("en-IN") %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.kms.toLocaleString("en-IN") %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.buying %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.brand %>
-                                                </td>
-                                                <td>
-                                                    <%= listing.category %>
-                                                </td>
-                                                <td><button type="button"
-                                                        class="btn btn-warning btn-sm">Available</button></td>
-                                                <td>
-                                                    <a type="button" href="/admin/edit_vehicle/<%= listing._id %>"
-                                                        class="btn btn-primary btn-sm"><i
-                                                            class="ri-pencil-line"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                        onclick="deleteListing('<%= listing._id %>')">
+                                                    <%= listing.name.split(' ')[0] %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.model %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.bodyType %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.price.toLocaleString("en-IN") %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.kms.toLocaleString("en-IN") %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.buying %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.brand %>
+                                                    </td>
+                                                    <td>
+                                                        <%= listing.category %>
+                                                    </td>
+                                                    <td><button type="button"
+                                                            class="btn btn-warning btn-sm">Available</button></td>
+                                                            <td>
+                                                                <a type="button" href="/admin/edit_vehicle/<%= listing._id %>"
+                                                                    class="btn btn-primary btn-sm"><i
+                                                                        class="ri-pencil-line"></i></a>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteListing(' <%=listing._id %>')">
                                                         <i class="ri-delete-bin-7-line"></i>
-                                                    </button>
+                                                        </button>
+
 
                                                 </td>
                                             </tr>
                                             <% } %>
-                                                <tr>
-                                                    <td>bajaj001</td>
-                                                    <td>Bajaj Pulser 220</td>
-                                                    <td>2015-16</td>
-                                                    <td>Motorcycles</td>
-                                                    <td>75000</td>
-                                                    <td>20000</td>
-                                                    <td>2017</td>
-                                                    <td>Bajaj</td>
-                                                    <td>Bike</td>
-                                                    <td><button type="button"
-                                                            class="btn btn-warning btn-sm">Available</button>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary btn-sm"><i
-                                                                class="ri-pencil-line"></i></button>
-                                                        <button type="button" class="btn btn-danger btn-sm"><i
-                                                                class="ri-delete-bin-7-line"></i></button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>dio001</td>
-                                                    <td>Honda Dio</td>
-                                                    <td>VS4 2017</td>
-                                                    <td>Scooter</td>
-                                                    <td>40000</td>
-                                                    <td>25000</td>
-                                                    <td>2017</td>
-                                                    <td>Honda</td>
-                                                    <td>Bike</td>
-                                                    <td><button type="button"
-                                                            class="btn btn-secondary btn-sm">Sold</button>
-                                                    </td>
-                                                    <td>
-                                                        <a class="btn btn-primary btn-sm" href="/admin/edit-vehicle"
-                                                            type="button"><i class="ri-pencil-line"></i></a>
+                                    <tbody>
+                                        <tr>
+                                            <td>tv001</td>
+                                            <td>TVS Ntorq</td>
+                                            <td>Race Edition</td>
+                                            <td>Scooter</td>
+                                            <td>55000</td>
+                                            <td>18000</td>
+                                            <td>2020</td>
+                                            <td>TVS</td>
+                                            <td>Bike</td>
+                                            <td><button type="button" class="btn btn-warning btn-sm">Available</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary btn-sm"><i
+                                                        class="ri-pencil-line"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm"><i
+                                                        class="ri-delete-bin-7-line"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>bajaj001</td>
+                                            <td>Bajaj Pulser 220</td>
+                                            <td>2015-16</td>
+                                            <td>Motorcycles</td>
+                                            <td>75000</td>
+                                            <td>20000</td>
+                                            <td>2017</td>
+                                            <td>Bajaj</td>
+                                            <td>Bike</td>
+                                            <td><button type="button" class="btn btn-warning btn-sm">Available</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary btn-sm"><i
+                                                        class="ri-pencil-line"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm"><i
+                                                        class="ri-delete-bin-7-line"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>dio001</td>
+                                            <td>Honda Dio</td>
+                                            <td>VS4 2017</td>
+                                            <td>Scooter</td>
+                                            <td>40000</td>
+                                            <td>25000</td>
+                                            <td>2017</td>
+                                            <td>Honda</td>
+                                            <td>Bike</td>
+                                            <td><button type="button" class="btn btn-secondary btn-sm">Sold</button>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="edit-/vehicle" type="button"><i
+                                                        class="ri-pencil-line"></i></a>
 
-                                                        <button type="button" class="btn btn-danger btn-sm"><i
-                                                                class="ri-delete-bin-7-line"></i></button>
-                                                    </td>
-                                                </tr>
+                                                <button type="button" class="btn btn-danger btn-sm"><i
+                                                        class="ri-delete-bin-7-line"></i></button>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -177,11 +194,3 @@
 
     </div>
     <!-- end main content-->
-
-    </div>
-    <!-- END layout-wrapper -->
-
-    <!-- ... -->
-
-
-    <!-- ... -->
