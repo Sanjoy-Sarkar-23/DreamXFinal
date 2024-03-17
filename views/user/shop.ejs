@@ -136,13 +136,11 @@
                             <div class="shop-product-grid">
                                 <% if (allListings.length> 0) { %>
 
-
-
                                     <% for(let listing of allListings) { %>
                                         <a href="/product/<%= listing._id %>">
                                             <div class="product-box">
                                                 <div class="product-img">
-                                                    <img src="<%=listing.images[0].url %> " alt="">
+                                                    <img src="<%= listing.images[0].url %>" alt="">
                                                 </div>
                                                 <div class="product-dt">
                                                     <div class="product-name-wishlist">
