@@ -134,45 +134,53 @@
                         </div>
                         <div class="shop-product">
                             <div class="shop-product-grid">
-                                <% for(let listing of allListings) { %>
-                                    <a href="/product/<%= listing._id %>">
-                                        <div class="product-box">
-                                            <div class="product-img">
-                                                <img src="<%=listing.images[0].url %> " alt="">
-                                            </div>
-                                            <div class="product-dt">
-                                                <div class="product-name-wishlist">
-                                                    <div class="product-name">
-                                                        <h3>
-                                                            <%= listing.brand %>
-                                                        </h3>
-                                                        <p>
-                                                            <%= listing.model %>
-                                                        </p>
+                                <% if (allListings.length> 0) { %>
+
+
+
+                                    <% for(let listing of allListings) { %>
+                                        <a href="/product/<%= listing._id %>">
+                                            <div class="product-box">
+                                                <div class="product-img">
+                                                    <img src="<%=listing.images[0].url %> " alt="">
+                                                </div>
+                                                <div class="product-dt">
+                                                    <div class="product-name-wishlist">
+                                                        <div class="product-name">
+                                                            <h3>
+                                                                <%= listing.brand %>
+                                                            </h3>
+                                                            <p>
+                                                                <%= listing.model %>
+                                                            </p>
+                                                        </div>
+                                                        <div class="wishlist">
+                                                            <img src="/user/icons/wishlist.png" alt="">
+                                                        </div>
                                                     </div>
-                                                    <div class="wishlist">
-                                                        <img src="/user/icons/wishlist.png" alt="">
-                                                    </div>
+
+                                                    <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN")
+                                                            %>
+                                                    </p>
+                                                    <ul>
+                                                        <li>
+                                                            <%= listing.price.toLocaleString("en-IN") %> KM
+                                                        </li>
+                                                        <li class="center">
+                                                            <%= listing.buying %>
+                                                        </li>
+                                                        <li>
+                                                            <%= listing.fuelType %>
+                                                        </li>
+                                                    </ul>
                                                 </div>
 
-                                                <p class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %>
-                                                </p>
-                                                <ul>
-                                                    <li>
-                                                        <%= listing.price.toLocaleString("en-IN") %> KM
-                                                    </li>
-                                                    <li class="center">
-                                                        <%= listing.buying %>
-                                                    </li>
-                                                    <li>
-                                                        <%= listing.fuelType %>
-                                                    </li>
-                                                </ul>
                                             </div>
-
-                                        </div>
-                                    </a>
-                                    <% } %>
+                                        </a>
+                                        <% } %>
+                                            <% } else { %>
+                                                <p>No listings found.</p>
+                                                <% } %>
                             </div>
                         </div>
                     </div>
